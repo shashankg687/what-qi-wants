@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Quantum Industry Wants? | World Quantum Day 2026</title>
+    <meta name="description"
+        content="A virtual industry–academia conclave on World Quantum Day, 14 April 2026. Featuring 11 quantum industry leaders from D-Wave, IBM, Deloitte, NQM, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --black: #000000;
+            --dark: #0a0a0a;
+            --card: #111111;
+            --card-border: rgba(255, 255, 255, 0.06);
+            --lime: #BFF549;
+            --lime-dim: rgba(191, 245, 73, 0.12);
+            --lime-glow: rgba(191, 245, 73, 0.06);
+            --white: #ffffff;
+            --gray: #9ca3af;
+            --gray-dim: #6b7280;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── Navigation ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 14px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-brand img {
+            height: 36px;
+        }
+
+        .nav-brand span {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--lime);
+        }
+
+        .nav-cta {
+            background: var(--lime) !important;
+            color: var(--black) !important;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-weight: 700 !important;
+            font-size: 12px !important;
+            letter-spacing: 0.3px;
+            transition: box-shadow 0.3s;
+        }
+
+        .nav-cta:hover {
+            box-shadow: 0 0 30px rgba(191, 245, 73, 0.4);
+        }
+
+        /* ─── Hero ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 32px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(191, 245, 73, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--lime-dim);
+            border: 1px solid rgba(191, 245, 73, 0.2);
+            border-radius: 100px;
+            padding: 8px 22px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--lime);
+            letter-spacing: 0.5px;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #ffffff 30%, #6b7280 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 .accent {
+            -webkit-text-fill-color: var(--lime);
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .meta-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .meta-pill .icon {
+            font-size: 18px;
+        }
+
+        .meta-pill .label {
+            color: var(--gray-dim);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-logos {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-top: 20px;
+            opacity: 0.7;
+        }
+
+        .hero-logos img {
+            height: 52px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--lime);
+            color: var(--black);
+            padding: 14px 36px;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            transition: all 0.3s;
+            box-shadow: 0 0 40px rgba(191, 245, 73, 0.2);
+            margin-bottom: 40px;
+        }
+
+        .hero-cta:hover {
+            box-shadow: 0 0 60px rgba(191, 245, 73, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* ─── Section ─── */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 32px;
+        }
+
+        .section-tag {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: var(--gray);
+            max-width: 640px;
+            margin-bottom: 48px;
+        }
+
+        /* ─── About ─── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .about-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: border-color 0.3s;
+        }
+
+        .about-card:hover {
+            border-color: rgba(191, 245, 73, 0.2);
+        }
+
+        .about-card .icon-box {
+            width: 44px;
+            height: 44px;
+            background: var(--lime-dim);
+            border: 1px solid rgba(191, 245, 73, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .about-card h3 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .about-card p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* ─── Schedule ─── */
+        .schedule-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 6px;
+        }
+
+        .schedule-table tr {
+            background: var(--card);
+            transition: background 0.2s;
+        }
+
+        .schedule-table tr:hover {
+            background: #161616;
+        }
+
+        .schedule-table tr.break-row {
+            background: transparent;
+        }
+
+        .schedule-table td {
+            padding: 16px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+        }
+
+        .schedule-table td:first-child {
+            border-radius: 12px 0 0 12px;
+            font-weight: 700;
+            color: var(--lime);
+            white-space: nowrap;
+            width: 140px;
+        }
+
+        .schedule-table td:last-child {
+            border-radius: 0 12px 12px 0;
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        .schedule-table .speaker-name-cell {
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .schedule-table .break-row td {
+            color: var(--gray-dim);
+            font-style: italic;
+            padding: 10px 20px;
+        }
+
+        /* ─── Speakers Grid ─── */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .speaker-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 28px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .speaker-card:hover {
+            border-color: rgba(191, 245, 73, 0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .speaker-card::after {
+            content: '→';
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            color: var(--lime);
+            font-size: 16px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .speaker-card:hover::after {
+            opacity: 1;
+        }
+
+        .speaker-card .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(191, 245, 73, 0.2);
+            flex-shrink: 0;
+        }
+
+        .speaker-card .info h3 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .speaker-card .info .role {
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .speaker-card .info .org {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ─── Host ─── */
+        .host-section {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 36px;
+            max-width: 700px;
+        }
+
+        .host-section .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(191, 245, 73, 0.2);
+            flex-shrink: 0;
+        }
+
+        .host-section h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .host-section .role {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+
+        .host-section .contact-link {
+            font-size: 13px;
+            color: var(--lime);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            padding: 40px 32px;
+            color: var(--gray-dim);
+            font-size: 13px;
+        }
+
+        footer .footer-logos {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            opacity: 0.6;
+        }
+
+        footer .footer-logos img {
+            height: 40px;
+        }
+
+        footer a {
+            color: var(--lime);
+            text-decoration: none;
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .speakers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .host-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ─── Divider ─── */
+        .section-divider {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--lime), transparent);
+            margin: 0 auto;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ Navigation ═══ -->
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <img src="assets/Logo_NQM.png" alt="NQM">
+                <span>NQM × IIT Indore</span>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#speakers">Speakers</a>
+                <a href="problems.html">Problem Statements</a>
+                <a href="#host">Host</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1aIZVjgXszFCp1YIShkSt8q0JZijx7sVwE6topEyJyMMdQg/viewform?usp=dialog"
+                    target="_blank" class="nav-cta">Register Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══ Hero ═══ -->
+    <section class="hero" id="home">
+        <div class="hero-badge">⚡ World Quantum Day · 14 April 2026</div>
+        <h1>What <span class="accent">Quantum Industry</span><br>Wants?</h1>
+        <p class="hero-sub">A industry–academia conclave bringing quantum leaders from global companies and Indian
+            startups to discuss what the quantum workforce of tomorrow needs.</p>
+
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1aIZVjgXszFCp1YIShkSt8q0JZijx7sVwE6topEyJyMMdQg/viewform?usp=dialog"
+            target="_blank" class="hero-cta">Register for Free →</a>
+
+        <div class="hero-meta">
+            <div class="meta-pill">
+                <span class="icon">📅</span>
+                <div>
+                    <div class="label">Date</div>
+                    <div>14 April 2026</div>
+                </div>
+            </div>
+            <div class="meta-pill">
+                <span class="icon">🕐</span>
+                <div>
+                    <div class="label">Time</div>
+                    <div>10:00 – 18:00 IST</div>
+                </div>
+            </div>
+            <div class="meta-pill">
+                <span class="icon">📍</span>
+                <div>
+                    <div class="label">Venue</div>
+                    <div>Virtual (Google Meet)</div>
+                </div>
+            </div>
+            <div class="meta-pill">
+                <span class="icon">🎤</span>
+                <div>
+                    <div class="label">Speakers</div>
+                    <div>11 Industry Leaders</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-logos">
+            <img src="assets/Logo_NQM.png" alt="National Quantum Mission">
+            <img src="assets/iiti_logo.png" alt="IIT Indore">
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ About ═══ -->
+    <section class="section" id="about">
+        <div class="section-tag">About the Event</div>
+        <h2 class="section-title">Bridging Quantum Research & Industry</h2>
+        <p class="section-desc">An initiative to understand what quantum companies need from the next generation of
+            researchers, engineers, and innovators.</p>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="icon-box">🎯</div>
+                <h3>Industry Roadmaps</h3>
+                <p>Hear directly from quantum companies about their technology priorities, product visions, and where
+                    they see quantum heading next.</p>
+            </div>
+            <div class="about-card">
+                <div class="icon-box">🧠</div>
+                <h3>Skills & Careers</h3>
+                <p>Understand what skills quantum employers value most — from error correction to cryptography to
+                    hardware engineering.</p>
+            </div>
+            <div class="about-card">
+                <div class="icon-box">🤝</div>
+                <h3>Collaboration</h3>
+                <p>Connect academic research with industry needs. Discover internship, project, and partnership
+                    opportunities.</p>
+            </div>
+            <div class="about-card">
+                <div class="icon-box">🇮🇳</div>
+                <h3>NQM Alignment</h3>
+                <p>Supporting India's National Quantum Mission by strengthening the quantum workforce pipeline and
+                    industry–academia connections.</p>
+            </div>
+            <div class="about-card">
+                <div class="icon-box">❓</div>
+                <h3>Real-World Challenges</h3>
+                <p>Speakers will share actual priority problems their teams are currently facing, challenging students
+                    to find novel solutions.</p>
+            </div>
+            <div class="about-card">
+                <div class="icon-box">📚</div>
+                <h3>Knowledge Repository</h3>
+                <p>All problem statements and talks will be compiled into a lasting resource for academic researchers to
+                    shape their theses and projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ Schedule ═══ -->
+    <section class="section" id="schedule">
+        <div class="section-tag">Event Schedule</div>
+        <h2 class="section-title">Full Day Programme</h2>
+        <p class="section-desc">Each speaker gets a 30-minute slot — 20 min presentation + 10 min Q&A with the audience.
+        </p>
+
+        <table class="schedule-table">
+            <tr>
+                <td>10:00 – 10:15</td>
+                <td class="speaker-name-cell">🎓 Inauguration</td>
+                <td>Welcome & Opening Remarks</td>
+            </tr>
+            <tr>
+                <td>10:15 – 10:45</td>
+                <td class="speaker-name-cell">Dr. Randy Kuang</td>
+                <td>Quantropi (Canada) — Post-Quantum Cryptography</td>
+            </tr>
+            <tr>
+                <td>10:45 – 11:15</td>
+                <td class="speaker-name-cell">Dr. Victoria Goliber</td>
+                <td>D-Wave (USA) — Quantum Annealing & Workforce</td>
+            </tr>
+            <tr>
+                <td>11:15 – 11:45</td>
+                <td class="speaker-name-cell">Dr. Jagrati Dwivedi</td>
+                <td>NQM, India — National Quantum Mission Roadmap</td>
+            </tr>
+            <tr>
+                <td>11:45 – 12:15</td>
+                <td class="speaker-name-cell">Dr. Ritajit Majumdar</td>
+                <td>IBM Quantum (India) — Quantum Error Correction</td>
+            </tr>
+            <tr>
+                <td>12:15 – 12:45</td>
+                <td class="speaker-name-cell">Dr. Shravani Shahapure</td>
+                <td>Deloitte — Quantum-Safe Cybersecurity</td>
+            </tr>
+            <tr class="break-row">
+                <td>12:45 – 13:45</td>
+                <td colspan="2">🍽️ Lunch Break</td>
+            </tr>
+            <tr>
+                <td>13:45 – 14:15</td>
+                <td class="speaker-name-cell">Biman Chattopadhyay</td>
+                <td>Quanfluence — Photonic Quantum Computing</td>
+            </tr>
+            <tr>
+                <td>14:15 – 14:45</td>
+                <td class="speaker-name-cell">Dr. Sourav Chatterjee</td>
+                <td>TCS Research — Quantum Sensing Applications</td>
+            </tr>
+            <tr>
+                <td>14:45 – 15:15</td>
+                <td class="speaker-name-cell">Dr. Nayana Das</td>
+                <td>LTI Mindtree — Quantum-Safe Communication</td>
+            </tr>
+            <tr>
+                <td>15:15 – 15:45</td>
+                <td class="speaker-name-cell">Dr. Rashi Koul</td>
+                <td>Taqbit Labs — QKD & QRNG Systems</td>
+            </tr>
+            <tr class="break-row">
+                <td>15:45 – 16:15</td>
+                <td colspan="2">☕ Tea Break</td>
+            </tr>
+            <tr>
+                <td>16:15 – 16:45</td>
+                <td class="speaker-name-cell">Dr. Pranab Dutta</td>
+                <td>GDQLabs — Quantum Sensing for Healthcare</td>
+            </tr>
+            <tr>
+                <td>16:45 – 17:15</td>
+                <td class="speaker-name-cell">Dr. Amit Kumar Chauhan</td>
+                <td>QNu Labs — Quantum Cryptography Solutions</td>
+            </tr>
+            <tr>
+                <td>17:15 – 17:30</td>
+                <td class="speaker-name-cell">🏁 Valedictory</td>
+                <td>Closing Remarks & Next Steps</td>
+            </tr>
+        </table>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ Speakers ═══ -->
+    <section class="section" id="speakers">
+        <div class="section-tag">Our Speakers</div>
+        <h2 class="section-title">11 Quantum Industry Leaders</h2>
+        <p class="section-desc">Click any speaker card to view their detailed poster with full bio, company background,
+            and focus area.</p>
+
+        <div class="speakers-grid">
+            <a href="speakers/poster_jagrati_nqm.html" class="speaker-card">
+                <img class="avatar" src="assets/photos/jagrati_nqm.jpg" alt="Dr. Jagrati Dwivedi">
+                <div class="info">
+                    <h3>Dr. Jagrati Dwivedi</h3>
+                    <div class="role">Scientist / Program Associate</div>
+                    <div class="org">NQM, India</div>
+                </div>
+            </a>
+            <a href="speakers/poster_victoria_dwave.html" class="speaker-card">
+                <img class="avatar" src="assets/photos/victoria_dwave.jpg" alt="Dr. Victoria Goliber">
+                <div class="info">
+                    <h3>Dr. Victoria Goliber</h3>
+                    <div class="role">Head of Technical Advising</div>
+                    <div class="org">D-Wave (USA)</div>
+                </div>
+            </a>
+            <a href="speakers/poster_randy_quantropi.html" class="speaker-card">
+                <img class="avatar" src="assets/photos/randy.jpg" alt="Dr. Randy Kuang">
+                <div class="info">
+                    <h3>Dr. Randy Kuang</h3>
+                    <div class="role">Co-founder & Chief Scientist</div>
+                    <div class="org">Quantropi (Canada)</div>
+                </div>
+            </a>
+            <a href="speakers/poster_ritajit_ibm.html" class="speaker-card">
+                <img class="avatar" src="assets/photos/ritajit.jpeg" alt="Dr. Ritajit Majumdar">
+                <div class="info">
+                    <h3>Dr. Ritajit Majumdar</h3>
+                    <div class="role">Research Scientist</div>
+                    <div class="org">IBM Quantum</div>
+                </div>
+            </a>
+            <a href="speakers/poster_shravani_deloitte.html" class="speaker-card">
+                <img class="avatar" src="assets/photos/shravani_deloitte.jpg" alt="Dr. Shravani Shahapure">
+                <div class="info">
+                    <h3>Dr. Shravani Shahapure</h3>
+                    <div class="role">Associate Director – Quantum Safe</div>
+                    <div class="org">Deloitte</div>
+                </div>
+            </a>
+            <a href="speakers/poster_biman_quanfluence.html" class="speaker-card">
+                <img class="avatar" src="assets/photos/biman_quanfluence.png" alt="Biman Chattopadhyay">
+                <div class="info">
+                    <h3>Biman Chattopadhyay</h3>
+                    <div class="role">Co-founder & CTO</div>
+                    <div class="org">Quanfluence</div>
+                </div>
+            </a>
+            <a href="speakers/poster_sourav_tcs.html" class="speaker-card">
+                <img class="avatar" src="assets/photos/sourav_tcs.jpg" alt="Dr. Sourav Chatterjee">
+                <div class="info">
+                    <h3>Dr. Sourav Chatterjee</h3>
+                    <div class="role">Research Engineer</div>
+                    <div class="org">TCS Research</div>
+                </div>
+            </a>
+            <a href="speakers/poster_nayana_ltimindtree.html" class="speaker-card">
+                <img class="avatar" src="assets/photos/nayana_ltimindtree.jpeg" alt="Dr. Nayana Das">
+                <div class="info">
+                    <h3>Dr. Nayana Das</h3>
+                    <div class="role">Research Engineer</div>
+                    <div class="org">LTI Mindtree</div>
+                </div>
+            </a>
+            <a href="speakers/poster_rashi_taqbit.html" class="speaker-card">
+                <img class="avatar" src="assets/photos/rashi_taqbit.jpg" alt="Dr. Rashi Koul">
+                <div class="info">
+                    <h3>Dr. Rashi Koul</h3>
+                    <div class="role">Quantum Technology Expert</div>
+                    <div class="org">Taqbit Labs</div>
+                </div>
+            </a>
+            <a href="speakers/poster_pranab_gdqlabs.html" class="speaker-card">
+                <img class="avatar" src="assets/photos/pranab gdq.jpeg" alt="Dr. Pranab Dutta">
+                <div class="info">
+                    <h3>Dr. Pranab Dutta</h3>
+                    <div class="role">CEO & Co-founder</div>
+                    <div class="org">GDQLabs</div>
+                </div>
+            </a>
+            <a href="speakers/poster_amit_qnulabs.html" class="speaker-card">
+                <img class="avatar" src="assets/photos/amit_qnulabs.jpg" alt="Dr. Amit Kumar Chauhan">
+                <div class="info">
+                    <h3>Dr. Amit Kumar Chauhan</h3>
+                    <div class="role">Senior Research Associate</div>
+                    <div class="org">QNu Labs</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ Host ═══ -->
+    <section class="section" id="host">
+        <div class="section-tag">Event Host</div>
+        <h2 class="section-title">Meet the Organiser</h2>
+        <p class="section-desc"></p>
+
+        <a href="speakers/poster_host_shashank.html" style="text-decoration:none;color:inherit;">
+            <div class="host-section" style="cursor:pointer;transition:border-color 0.3s;"
+                onmouseover="this.style.borderColor='rgba(191,245,73,0.3)'"
+                onmouseout="this.style.borderColor='var(--card-border)'">
+                <img class="avatar" src="assets/photos/sha_pic_linkedin.png" alt="Dr. Shashank Gupta">
+                <div>
+                    <h3>Dr. Shashank Gupta</h3>
+                    <div class="role">Assistant Professor, Department of Physics & ICQC<br>Indian Institute of
+                        Technology
+                        Indore</div>
+                    <a href="mailto:shashankg@iiti.ac.in" class="contact-link">✉ shashankg@iiti.ac.in</a>
+                    <div style="margin-top:8px;font-size:12px;color:var(--lime);font-weight:700;">View Profile →</div>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ Register ═══ -->
+    <section class="section" id="register" style="text-align: center; padding-bottom: 100px;">
+        <div class="section-tag">Join Us</div>
+        <h2 class="section-title">Register for the Event</h2>
+        <p class="section-desc" style="margin-left: auto; margin-right: auto;">Free registration. Open to students,
+            researchers, faculty, and industry professionals worldwide.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1aIZVjgXszFCp1YIShkSt8q0JZijx7sVwE6topEyJyMMdQg/viewform?usp=dialog"
+            target="_blank" class="hero-cta" style="margin-top: 8px;">Register Now →</a>
+        <div style="margin-top: 32px;">
+            <img src="assets/qr_register.png" alt="Scan to Register"
+                style="width: 160px; border-radius: 12px; border: 2px solid var(--card-border);">
+            <p style="margin-top: 10px; font-size: 12px; color: var(--gray-dim);">Scan the QR code to register</p>
+        </div>
+    </section>
+
+    <!-- ═══ Footer ═══ -->
+    <footer>
+        <div class="footer-logos">
+            <img src="assets/Logo_NQM.png" alt="NQM">
+            <img src="assets/iiti_logo.png" alt="IIT Indore">
+        </div>
+        <p>Organised by the <strong>Inter-disciplinary Centre for Quantum Computing (ICQC)</strong>, IIT Indore</p>
+        <p>in collaboration with the <strong>National Quantum Mission (NQM)</strong></p>
+        <p style="margin-top: 12px;">© 2026 What Quantum Industry Wants? · <a
+                href="mailto:shashankg@iiti.ac.in">Contact</a></p>
+    </footer>
+
+</body>
+
+</html>
