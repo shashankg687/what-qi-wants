@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Anjani Priyadarsini | What Quantum Industry Wants?</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         :root {
             --black: #000000;
             --card-bg: #0a0a0a;
-            --card-border: rgba(255,255,255,0.08);
+            --card-border: rgba(255, 255, 255, 0.08);
             --lime: #BFF549;
-            --lime-dim: rgba(191,245,73,0.15);
+            --lime-dim: rgba(191, 245, 73, 0.15);
             --white: #ffffff;
             --gray: #9ca3af;
             --gray-dim: #6b7280;
@@ -47,7 +55,7 @@
             transform: translateX(-50%);
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(191,245,73,0.04) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(191, 245, 73, 0.04) 0%, transparent 70%);
             z-index: 0;
             pointer-events: none;
         }
@@ -106,8 +114,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(191,245,73,0.08);
-            border: 1px solid rgba(191,245,73,0.2);
+            background: rgba(191, 245, 73, 0.08);
+            border: 1px solid rgba(191, 245, 73, 0.2);
             border-radius: 100px;
             padding: 6px 18px;
             font-size: 11px;
@@ -189,7 +197,7 @@
             gap: 32px;
             align-items: flex-start;
             background: var(--card-bg);
-            border: 1px solid rgba(191,245,73,0.15);
+            border: 1px solid rgba(191, 245, 73, 0.15);
             border-radius: 20px;
             padding: 32px 36px;
             margin-bottom: 24px;
@@ -221,8 +229,8 @@
             height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid rgba(191,245,73,0.3);
-            box-shadow: 0 0 40px rgba(191,245,73,0.08);
+            border: 3px solid rgba(191, 245, 73, 0.3);
+            box-shadow: 0 0 40px rgba(191, 245, 73, 0.08);
         }
 
         .speaker-name {
@@ -290,8 +298,8 @@
         .bottom-icon {
             width: 32px;
             height: 32px;
-            background: rgba(191,245,73,0.08);
-            border: 1px solid rgba(191,245,73,0.15);
+            background: rgba(191, 245, 73, 0.08);
+            border: 1px solid rgba(191, 245, 73, 0.15);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -328,7 +336,7 @@
             height: 36px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid rgba(191,245,73,0.25);
+            border: 2px solid rgba(191, 245, 73, 0.25);
         }
 
         .host-info {
@@ -368,92 +376,105 @@
         }
 
         @media print {
-            body { background: #000; padding: 0; }
+            body {
+                background: #000;
+                padding: 0;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<div class="poster">
-    <div class="content">
+    <div class="poster">
+        <div class="content">
 
-        <!-- Header -->
-        <div class="header">
-            <div class="logo-left">
-                <img src="../assets/Logo_NQM.png" alt="NQM">
-                <span class="org-name">National<br>Quantum<br>Mission</span>
-            </div>
-            <div class="logo-right">
-                <img src="../assets/iiti_logo.png" alt="IIT Indore">
-            </div>
-        </div>
-
-        <!-- Event Tag -->
-        <div class="event-tag">
-            <div class="badge">⚡ World Quantum Day · 14 April 2026</div>
-        </div>
-        <div class="event-title">What Quantum Industry Wants?</div>
-        <div class="divider"></div>
-
-        <!-- Company Section -->
-        <div class="company-section">
-            <div class="company-question">What <span class="company-highlight">Quantum Technology</span> Wants?</div>
-            <div class="company-desc">As an independent consultant and evangelist, Dr. Priyadarsini works across the quantum ecosystem to accelerate research, education, and industry adoption. She advises enterprises on quantum readiness and helps build educational initiatives to democratize access to quantum technologies globally.</div>
-        </div>
-
-        <!-- Speaker Section -->
-        <div class="speaker-section">
-            <div class="photo-col">
-                <img class="avatar" src="../assets/photos/anjani_aws.jpeg" alt="Dr. Anjani Priyadarsini">
-                <div class="speaker-name">Dr. Anjani Priyadarsini</div>
-                <div class="speaker-title">Quantum Computing Evangelist &amp; Advisor</div>
-                <div class="speaker-org">Quantum Technology</div>
-            </div>
-            <div class="bio-col">
-                <div class="bio-label">Speaker Bio</div>
-                <div class="bio-text">Dr. Anjani Priyadarsini is a Quantum Industry Specialist, Executive Advisor, and Quantum Computing Evangelist. With extensive experience in Quantum Business Development and evangelism (previously with AWS India), she is passionate about bridging the gap between quantum research and practical industry applications. She actively engages with academic institutions, enterprises, and the broader tech community to accelerate the adoption and understanding of quantum technologies in India and globally.</div>
-            </div>
-        </div>
-
-        <!-- Bottom Bar -->
-        <div class="bottom-bar">
-            <div class="bottom-card">
-                <div class="bottom-icon">📅</div>
-                <div>
-                    <div class="bottom-label">Date</div>
-                    <div class="bottom-value">14 April 2026</div>
+            <!-- Header -->
+            <div class="header">
+                <div class="logo-left">
+                    <img src="../assets/Logo_NQM.png" alt="NQM">
+                    <span class="org-name">National<br>Quantum<br>Mission</span>
+                </div>
+                <div class="logo-right">
+                    <img src="../assets/iiti_logo.png" alt="IIT Indore">
                 </div>
             </div>
-            <div class="bottom-card">
-                <div class="bottom-icon">🕐</div>
-                <div>
-                    <div class="bottom-label">Time</div>
-                    <div class="bottom-value">10:00 – 18:00 IST</div>
+
+            <!-- Event Tag -->
+            <div class="event-tag">
+                <div class="badge">⚡ World Quantum Day · 14 April 2026</div>
+            </div>
+            <div class="event-title">What Quantum Industry Wants?</div>
+            <div class="divider"></div>
+
+            <!-- Company Section -->
+            <div class="company-section">
+                <div class="company-question">What <span class="company-highlight">Executive Advisor</span> Wants?</div>
+                <div class="company-desc">As a Quantum Industry Specialist and Executive Advisor, Dr. Priyadarsini works
+                    across the quantum ecosystem to accelerate research, education, and industry adoption. She advises
+                    enterprises on quantum readiness and helps build educational initiatives to democratize access to
+                    quantum technologies globally.</div>
+            </div>
+
+            <!-- Speaker Section -->
+            <div class="speaker-section">
+                <div class="photo-col">
+                    <img class="avatar" src="../assets/photos/anjani_aws.jpeg" alt="Dr. Anjani Priyadarsini">
+                    <div class="speaker-name">Dr. Anjani Priyadarsini</div>
+                    <div class="speaker-title">Quantum Industry Specialist</div>
+                    <div class="speaker-org">Executive Advisor (Independent)</div>
+                </div>
+                <div class="bio-col">
+                    <div class="bio-label">Speaker Bio</div>
+                    <div class="bio-text">Dr. Anjani Priyadarsini is a Quantum Industry Specialist and Executive
+                        Advisor. With extensive experience in Quantum Business Development (previously with AWS India),
+                        she is passionate about bridging the gap between quantum research and practical industry
+                        applications. She actively engages with academic institutions, enterprises, and the broader tech
+                        community to accelerate the adoption and understanding of quantum technologies in India and
+                        globally.</div>
                 </div>
             </div>
-            <div class="bottom-card">
-                <div class="bottom-icon">📍</div>
-                <div>
-                    <div class="bottom-label">Venue</div>
-                    <div class="bottom-value">Google Meet</div>
+
+            <!-- Bottom Bar -->
+            <div class="bottom-bar">
+                <div class="bottom-card">
+                    <div class="bottom-icon">📅</div>
+                    <div>
+                        <div class="bottom-label">Date</div>
+                        <div class="bottom-value">14 April 2026</div>
+                    </div>
+                </div>
+                <div class="bottom-card">
+                    <div class="bottom-icon">🕐</div>
+                    <div>
+                        <div class="bottom-label">Time</div>
+                        <div class="bottom-value">10:00 – 18:00 IST</div>
+                    </div>
+                </div>
+                <div class="bottom-card">
+                    <div class="bottom-icon">📍</div>
+                    <div>
+                        <div class="bottom-label">Venue</div>
+                        <div class="bottom-value">Google Meet</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="host-section">
-            <img class="host-avatar" src="../assets/photos/sha_pic_linkedin.png" alt="Dr. Shashank Gupta">
-            <div class="host-info">
-                <div class="host-label">Host</div>
-                <span class="host-name">Dr. Shashank Gupta</span> · Asst. Prof., IIT Indore
+            <div class="host-section">
+                <img class="host-avatar" src="../assets/photos/sha_pic_linkedin.png" alt="Dr. Shashank Gupta">
+                <div class="host-info">
+                    <div class="host-label">Host</div>
+                    <span class="host-name">Dr. Shashank Gupta</span> · Asst. Prof., IIT Indore
+                </div>
             </div>
-        </div>
 
-        <div class="contact">
-            <span class="mail-icon">✉</span> Contact: <a href="mailto:shashankg@iiti.ac.in">shashankg@iiti.ac.in</a>
-        </div>
+            <div class="contact">
+                <span class="mail-icon">✉</span> Contact: <a href="mailto:shashankg@iiti.ac.in">shashankg@iiti.ac.in</a>
+            </div>
 
+        </div>
     </div>
-</div>
 
 </body>
+
 </html>
