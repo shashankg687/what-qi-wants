@@ -7,6 +7,8 @@
     <title>What Quantum Industry Wants? | World Quantum Day 2026</title>
     <meta name="description"
         content="A virtual industry–academia conclave on World Quantum Day, 14 April 2026. Featuring 11 quantum industry leaders from D-Wave, IBM, Deloitte, NQM, and more.">
+    <!-- Load Spline Viewer Component -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -552,6 +554,41 @@
             margin: 0 auto;
             opacity: 0.4;
         }
+
+        /* ─── Spline Customizations & Fallback ─── */
+        spline-viewer::part(logo) {
+            display: none !important;
+        }
+
+        spline-viewer {
+            --spline-viewer-logo-display: none;
+        }
+
+        #spline-fallback {
+            display: none;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #spline-fallback h1 {
+            font-size: clamp(32px, 5vw, 64px);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            background: linear-gradient(180deg, #ffffff 30%, #6b7280 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin: 0;
+        }
+
+        #spline-fallback h1 .accent {
+            -webkit-text-fill-color: var(--lime);
+        }
     </style>
 </head>
 
@@ -579,12 +616,30 @@
     <!-- ═══ Hero ═══ -->
     <section class="hero" id="home">
         <div class="hero-badge">⚡ World Quantum Day · 14 April 2026</div>
-        <h1>What <span class="accent">Quantum Industry</span><br>Wants?</h1>
+
+        <!-- Spline Fallback (Shown if JS/Spline fails or is skipped for performance) -->
+        <div id="spline-fallback" style="display: none; height: 500px; margin-bottom: 20px;">
+            <h1>What <span class="accent">Quantum Industry</span><br>Wants?</h1>
+        </div>
+
+        <!-- Interactive 3D Spline Scene -->
+        <div class="spline-hero-container" id="spline-container"
+            style="width: 100%; height: 500px; max-width: 900px; margin: 0 auto; margin-bottom: 20px; position: relative; z-index: 10;">
+            <spline-viewer url="https://prod.spline.design/kS6UKAnP9JhtQFRA/scene.splinecode?v=1740635002"
+                background="transparent" style="width: 100%; height: 100%;"></spline-viewer>
+            <!-- Watermark Cover Hack -->
+            <div
+                style="position: absolute; bottom: 0; right: 0; width: 150px; height: 50px; background: var(--black); z-index: 20; border-radius: 8px 0 0 0;">
+            </div>
+        </div>
         <p class="hero-sub">An industry–academia conclave bringing quantum leaders from global companies and Indian
             startups to discuss what the quantum workforce of tomorrow needs.</p>
 
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1aIZVjgXszFCp1YIShkSt8q0JZijx7sVwE6topEyJyMMdQg/viewform?usp=dialog"
             target="_blank" class="hero-cta">Register for Free →</a>
+        <div style="text-align: center; color: var(--gray); font-size: 14px; margin-top: 12px; margin-bottom: 24px;">
+            Registration Deadline: <span style="color: var(--lime); font-weight: 600;">31st March 2026 (23:59
+                IST)</span></div>
 
         <div class="hero-meta">
             <div class="meta-pill">
@@ -798,6 +853,7 @@
                     <h3>Dr. Ritajit Majumdar</h3>
                     <div class="role">Research Scientist</div>
                     <div class="org">IBM Quantum</div>
+
                 </div>
             </a>
             <a href="speakers/poster_shravani_deloitte.html" class="speaker-card">
@@ -894,6 +950,8 @@
             researchers, faculty, and industry professionals worldwide.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1aIZVjgXszFCp1YIShkSt8q0JZijx7sVwE6topEyJyMMdQg/viewform?usp=dialog"
             target="_blank" class="hero-cta" style="margin-top: 8px;">Register Now →</a>
+        <div style="margin-top: 12px; font-size: 14px; color: var(--gray);">Registration Deadline: <span
+                style="color: var(--lime); font-weight: 600;">31st March 2026 (23:59 IST)</span></div>
         <div style="margin-top: 32px;">
             <img src="assets/qr_register.png" alt="Scan to Register"
                 style="width: 160px; border-radius: 12px; border: 2px solid var(--card-border);">
@@ -913,6 +971,64 @@
                 href="mailto:shashankg@iiti.ac.in">Contact</a></p>
     </footer>
 
+    <script>
+        // Performance optimization for Spline
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById('spline-container');
+            const fallback = document.getElementById('spline-fallback');
+            const viewer = document.querySelector('spline-viewer');
+
+            // 1. Skip Spline entirely on low-end devices or slow networks
+            const isMobile = window.innerWidth < 768;
+            const isLowEnd = navigator.hardwareConcurrency <= 2;
+            const isSlowNetwork = navigator.connection &&
+                (navigator.connection.saveData ||
+                    navigator.connection.effectiveType === 'slow-2g' ||
+                    navigator.connection.effectiveType === '2g' ||
+                    navigator.connection.effectiveType === '3g');
+
+            if ((isMobile && isLowEnd) || isSlowNetwork) {
+                container.style.display = 'none';
+                fallback.style.display = 'flex';
+                // Remove the component so it doesn't load in background
+                if (viewer) viewer.remove();
+                return;
+            }
+
+            // 2. Timeout Fallback (if Spline fails to load under 8 seconds)
+            const timeoutId = setTimeout(() => {
+                // If it hasn't fully rendered after 8s, show HTML fallback
+                if (viewer && !viewer.shadowRoot) {
+                    container.style.display = 'none';
+                    fallback.style.display = 'flex';
+                }
+            }, 8000);
+
+            // 3. Remove "Built with Spline" watermark
+            const removeLogo = () => {
+                if (viewer && viewer.shadowRoot) {
+                    const logo = viewer.shadowRoot.querySelector('#logo');
+                    if (logo) {
+                        logo.remove();
+                    }
+                }
+            };
+
+            // Try to remove it continuously until successful
+            const logoInterval = setInterval(() => {
+                if (viewer && viewer.shadowRoot) {
+                    const logo = viewer.shadowRoot.querySelector('#logo');
+                    if (logo) {
+                        logo.remove();
+                        clearInterval(logoInterval);
+                    }
+                }
+            }, 500);
+
+            // Clear interval after 10s worst case
+            setTimeout(() => clearInterval(logoInterval), 10000);
+        });
+    </script>
 </body>
 
 </html>
