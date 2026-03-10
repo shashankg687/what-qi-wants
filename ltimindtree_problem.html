@@ -350,7 +350,7 @@
             font-weight: 600;
             font-size: 14px;
             font-style: italic;
-            white-space: nowrap;
+            /* white-space: nowrap; removing to allow wrapping in headers */
         }
 
         .fill-block {
@@ -682,16 +682,18 @@
 
             <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
                 <div class="cover__badge">⚡ Problem Statement · World Quantum Day 2026</div>
-                <h1 class="cover__title"><span class="fill">AI/ML for adaptive stabilization and anomaly detection in
-                        Continuous-Variable QKD</span></h1>
-                <p class="cover__subtitle"><span class="fill">Develop machine learning models to dynamically stabilize
-                        continuous-variable QKD systems.</span></p>
+                <h1 class="cover__title"><span class="fill">Is Quantum Machine Learning Suitable for Healthcare Data? —
+                        A Benchmarking Study</span></h1>
+                <p class="cover__subtitle"><span class="fill">Investigate whether Quantum Machine Learning (QML) can
+                        effectively model structured healthcare datasets by benchmarking QML and classical models on the
+                        Pima Indians Diabetes dataset under realistic quantum constraints.</span></p>
 
                 <div class="cover__company-block">
-                    <img src="TQL logo.jpeg" alt="Taqbit Labs Logo" class="cover__company-logo"
+                    <img src="LTIMindtree_logo.png" alt="LTI Mindtree Logo" class="cover__company-logo"
                         style="background: none; padding: 0; border-radius: 0; object-fit: contain;">
-                    <div class="cover__company-name"><span class="fill">Taqbit Labs</span></div>
-                    <div class="cover__company-tagline"><span class="fill">Quantum-Safe Cybersecurity Solutions</span>
+                    <div class="cover__company-name"><span class="fill">LTI Mindtree</span></div>
+                    <div class="cover__company-tagline"><span class="fill">Global Technology Consulting and Digital
+                            Solutions</span>
                     </div>
                 </div>
 
@@ -714,7 +716,7 @@
                         <div class="cover__meta-icon">🎯</div>
                         <div>
                             <div class="cover__meta-label">Difficulty</div>
-                            <div class="cover__meta-value"><span class="fill">Advanced</span></div>
+                            <div class="cover__meta-value"><span class="fill">Intermediate</span></div>
                         </div>
                     </div>
                 </div>
@@ -728,7 +730,7 @@
 
 
         <!-- ═══════════════════════════════════════════════
-             PAGE 3: ABOUT US
+             PAGE 2: ABOUT US
              ═══════════════════════════════════════════════ -->
         <div class="page">
             <div class="page-header">
@@ -747,11 +749,11 @@
                 <h2 class="section-title">Introduction &<br>Company Overview</h2>
 
                 <div class="fill-block fill-block--large">
-                    <strong>Taqbit Labs</strong> is building quantum-secure communication systems, post-quantum
-                    cryptography, and real-time quantum key distribution (QKD) solutions that ensure digital trust in an
-                    uncertain future. Our technologies enable unhackable encryption, true randomness generation, and a
-                    secure quantum backbone for government, finance, and critical infrastructure, proudly developed and
-                    manufactured in India.
+                    <strong>LTM</strong> is a global technology consulting and digital solutions organization with a
+                    strong focus on Artificial Intelligence and emerging technologies.
+                    <br><br>The LTM Quantum Research team focuses on quantum simulation, quantum optimization, quantum
+                    machine learning (QML), and quantum-safe technologies, exploring practical enterprise applications
+                    of quantum computing.
                 </div>
 
                 <div class="divider"></div>
@@ -760,35 +762,31 @@
                     <div class="card">
                         <span class="card__icon">🔬</span>
                         <div class="card__title">Core Focus Area</div>
-                        <div class="card__desc"><span class="fill">Cybersecurity, QKD, QRNG, PQC</span></div>
+                        <div class="card__desc"><span class="fill">Quantum Machine Learning, Healthcare Analytics</span>
+                        </div>
                     </div>
                     <div class="card">
                         <span class="card__icon">🌍</span>
                         <div class="card__title">Headquarters</div>
-                        <div class="card__desc"><span class="fill">India</span></div>
-                    </div>
-                    <div class="card">
-                        <span class="card__icon">📅</span>
-                        <div class="card__title">Founded</div>
-                        <div class="card__desc"><span class="fill">2018</span></div>
+                        <div class="card__desc"><span class="fill">United States</span></div>
                     </div>
                     <div class="card">
                         <span class="card__icon">🌐</span>
                         <div class="card__title">Website</div>
-                        <div class="card__desc"><span class="fill">https://taqbit.com/</span></div>
+                        <div class="card__desc"><span class="fill">https://www.ltimindtree.com/</span></div>
                     </div>
                 </div>
             </div>
 
             <div class="page-footer">
                 <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
-                <span class="page-footer__page">03</span>
+                <span class="page-footer__page">02</span>
             </div>
         </div>
 
 
         <!-- ═══════════════════════════════════════════════
-             PAGE 4: MOTIVATION
+             PAGE 3: MOTIVATION
              ═══════════════════════════════════════════════ -->
         <div class="page page--glow">
             <div class="page-header">
@@ -806,32 +804,29 @@
                 <div class="section-label"><span class="section-label__icon">💡</span> Motivation</div>
                 <h2 class="section-title">Why This Problem<br>Matters</h2>
 
-                <p>Explain the real-world significance of this problem. Why should students care? What impact will
-                    solving it have on the industry or society?</p>
+                <p>Machine learning is widely used in healthcare to predict disease risks from clinical data. Quantum
+                    Machine Learning (QML) is an emerging field exploring whether quantum computing techniques can
+                    enhance machine learning tasks.</p>
 
                 <div class="fill-block fill-block--large">
-                    Continuous-Variable (CV) QKD relies on precise coherent detection (homodyne/heterodyne), making it
-                    susceptible to rapid phase drifts and environmental noise (temperature fluctuations, mechanical
-                    vibrations). Standard classical PID controllers often fall short of optimal tracking. AI/ML
-                    techniques can provide predictive stabilization and act as an anomaly detector against eavesdropping
-                    attacks (like local-oscillator intensity attacks) without sacrificing data throughput. Integrating
-                    these models will vastly improve CV-QKD efficiency and resilience in noisy channels.
+                    However, real-world structured datasets are often low-dimensional and noisy, raising an important
+                    question:
+                    <br><br><strong>When does QML actually make sense for real-world data?</strong>
+                    <br><br>This challenge aims to evaluate the practical usefulness and limitations of QML using a real
+                    healthcare dataset.
                 </div>
-
-
-
 
             </div>
 
             <div class="page-footer">
                 <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
-                <span class="page-footer__page">04</span>
+                <span class="page-footer__page">03</span>
             </div>
         </div>
 
 
         <!-- ═══════════════════════════════════════════════
-             PAGE 5: PROBLEM STATEMENT
+             PAGE 4: PROBLEM STATEMENT
              ═══════════════════════════════════════════════ -->
         <div class="page">
             <div class="page-header">
@@ -849,45 +844,53 @@
                 <h2 class="section-title"><span class="fill">Problem Statement</span></h2>
 
                 <div class="fill-block fill-block--large">
-                    Develop an ML model capable of forecasting and correcting phase drift in simulated CV-QKD homodyne
-                    detector streams, while simultaneously flagging anomalous variance patterns indicative of an
-                    eavesdropper.
+                    Participants must investigate whether QML provides meaningful advantages over classical ML for
+                    structured healthcare datasets.
+                    <br><br>Using the Pima Indians Diabetes dataset, teams must build baseline models, implement at
+                    least one QML model using a hybrid quantum–classical approach, and evaluate the impact of quantum
+                    constraints.
+                    The focus is not only model accuracy but also a critical evaluation of QML applicability.
                 </div>
 
                 <div class="highlight-box">
-                    <strong>Key Question:</strong>
-                    <p class="fill">Can machine learning models predict and correct rapid phase drifts in CV-QKD
-                        systems?</p>
+                    <strong>Pima Indians Diabetes Dataset:</strong>
+                    <p class="fill">The dataset contains 768 patient records with 8 clinical attributes such as glucose
+                        level, blood pressure, BMI, insulin level, age, etc.<br>Task: Binary classification to predict
+                        diabetes risk.</p>
                 </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="section-label"><span class="section-label__icon">🔑</span> Key Challenges</div>
-            <p style="margin-bottom: 16px;">List the core technical challenges students will face.</p>
+            <div class="section-label"><span class="section-label__icon">🔑</span> Expected Tasks</div>
 
             <ul class="numbered-list">
                 <li>
                     <div class="item-content">
-                        <div class="item-title"><span class="fill">Multitask Learning</span></div>
-                        <div class="item-desc"><span class="fill">The model must handle dual objectives: predicting
-                                phase correction signals and classifying the presence vs. absence of an attack.</span>
+                        <div class="item-title"><span class="fill">Data Preparation</span></div>
+                        <div class="item-desc"><span class="fill">Preprocess and analyze the dataset.</span>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="item-content">
-                        <div class="item-title"><span class="fill">Simulated Reality</span></div>
-                        <div class="item-desc"><span class="fill">Because experimental data may not be immediately
-                                available, students must build a credible simulation of a CV-QKD channel with noise and
-                                attacks to train their model.</span></div>
+                        <div class="item-title"><span class="fill">Classical Baseline</span></div>
+                        <div class="item-desc"><span class="fill">Implement classical ML baseline models (e.g. Logistic
+                                Regression, Random Forest, SVM).</span></div>
                     </div>
                 </li>
                 <li>
                     <div class="item-content">
-                        <div class="item-title"><span class="fill">Real-time Constraints</span></div>
-                        <div class="item-desc"><span class="fill">The inference of the ML model must be fast enough to
-                                be applicable to real-time high-speed data streams.</span></div>
+                        <div class="item-title"><span class="fill">Quantum Model Implementation</span></div>
+                        <div class="item-desc"><span class="fill">Implement at least one Quantum Machine Learning model
+                                using frameworks such as Qiskit or PennyLane.</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-title"><span class="fill">Benchmarking and Analysis</span></div>
+                        <div class="item-desc"><span class="fill">Compare classical and quantum model performance and
+                                provide analysis on whether QML is suitable for this problem.</span></div>
                     </div>
                 </li>
             </ul>
@@ -895,13 +898,13 @@
 
         <div class="page-footer">
             <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
-            <span class="page-footer__page">05</span>
+            <span class="page-footer__page">04</span>
         </div>
     </div>
 
 
     <!-- ═══════════════════════════════════════════════
-             PAGE 6: REQUIREMENTS
+             PAGE 5: REQUIREMENTS
              ═══════════════════════════════════════════════ -->
     <div class="page">
         <div class="page-header">
@@ -916,63 +919,55 @@
 
         <div class="section-body" style="flex:1;">
             <div class="section-label"><span class="section-label__icon">⚙️</span> Requirements</div>
-            <h2 class="section-title">Technical<br>Specifications</h2>
-
-            <p>Define the technical requirements, constraints, and specifications that students must follow.</p>
+            <h2 class="section-title">Mandatory<br>Requirements</h2>
 
             <div class="card-grid">
                 <div class="card card--full">
                     <span class="card__icon">💻</span>
-                    <div class="card__title">Technical Stack & Tools</div>
+                    <div class="card__title">Quantum Requirement</div>
                     <div class="card__desc">
                         <div class="fill-block">
-                            • Python (TensorFlow, PyTorch, or Scikit-Learn)
-                            <br>• Experience with time-series analysis (RNNs, LSTMs, Transformers)
-                            <br>• Basic signal processing and control theory
+                            Solutions must include a quantum circuit-based model implemented using frameworks such as:
+                            <br>• Qiskit
+                            <br>• PennyLane
+                            <br>• Cirq
+                            <br><br>Submissions without a quantum model implementation will not be considered.
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <span class="card__icon">📏</span>
-                    <div class="card__title">Constraints</div>
+                <div class="card card--full">
+                    <span class="card__icon">📊</span>
+                    <div class="card__title">Mandatory Results Table</div>
                     <div class="card__desc">
                         <div class="fill-block">
-                            • Fast inference overhead
-                            <br>• The dataset must be rigorously simulated
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <span class="card__icon">✅</span>
-                    <div class="card__title">Acceptance Criteria</div>
-                    <div class="card__desc">
-                        <div class="fill-block">
-                            • ML model should out-perform a baseline PID controller
-                            <br>• Accurately classify presence/absence of eavesdropping maneuvers (e.g. F1 score > 0.90
-                            on simulated attack dataset).
+                            Teams must include the following comparison table in their submission:
+                            <br><br>
+                            Model | Accuracy | ROC-AUC
+                            <br>Logistic Regression | ... | ...
+                            <br>Random Forest / SVM | ... | ...
+                            <br>Quantum ML Model | ... | ...
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="highlight-box">
-                <p><strong>Note:</strong> Students will be working on these problem statements over the summer break
-                    (May – July 2026). Please calibrate the scope accordingly — the problem should be
-                    <strong>challenging yet achievable</strong> within 8–10 weeks of focused effort by a team of 2–4
-                    undergraduates.
+                <p><strong>Note:</strong> This is a self-guided challenge. No mentoring, technical support, or guidance
+                    will be provided by LTM during the challenge. Participants are expected to independently explore the
+                    dataset and relevant quantum machine learning frameworks.
                 </p>
             </div>
         </div>
 
         <div class="page-footer">
             <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
-            <span class="page-footer__page">06</span>
+            <span class="page-footer__page">05</span>
         </div>
     </div>
 
 
     <!-- ═══════════════════════════════════════════════
-             PAGE 7: DELIVERABLES
+             PAGE 6: DELIVERABLES
              ═══════════════════════════════════════════════ -->
     <div class="page page--glow">
         <div class="page-header">
@@ -989,36 +984,34 @@
             <div class="section-label"><span class="section-label__icon">📦</span> Deliverables</div>
             <h2 class="section-title">What Students<br>Must Submit</h2>
 
-            <p>Define exactly what participants need to deliver upon solving the problem statement.</p>
-
             <ul class="numbered-list">
                 <li>
                     <div class="item-content">
-                        <div class="item-title">Custom Simulator and Dataset</div>
-                        <div class="item-desc"><span class="fill">A script to generate CV-QKD time-series data with
-                                noise and attacks.</span></div>
+                        <div class="item-title">Single Runnable Notebook</div>
+                        <div class="item-desc"><span class="fill">(Jupyter/Colab) reproducing the full workflow and
+                                results.</span></div>
                     </div>
                 </li>
                 <li>
                     <div class="item-content">
-                        <div class="item-title">Trained ML Model</div>
-                        <div class="item-desc"><span class="fill">The trained model (e.g. .pt, .h5) alongside inference
-                                and training scripts.</span></div>
+                        <div class="item-title">Code Implementation</div>
+                        <div class="item-desc"><span class="fill">Code implementing both classical and quantum
+                                models.</span></div>
                     </div>
                 </li>
                 <li>
                     <div class="item-content">
-                        <div class="item-title">Technical Report (4–6 pages)</div>
-                        <div class="item-desc"><span class="fill">A report covering the generation of the dataset,
-                                architecture of the ML model, and benchmark comparison against a standard PID.</span>
+                        <div class="item-title">Quantum Circuit Diagram</div>
+                        <div class="item-desc"><span class="fill">At least one quantum circuit diagram used in the
+                                model.</span>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="item-content">
-                        <div class="item-title">Jupyter Notebook Demo</div>
-                        <div class="item-desc"><span class="fill">A clear visualization notebook showcasing "before vs.
-                                after" ML correction.</span></div>
+                        <div class="item-title">Short Report</div>
+                        <div class="item-desc"><span class="fill">Maximum 3 pages explaining methodology and insights.
+                                Results must be reproducible from the submitted code.</span></div>
                     </div>
                 </li>
             </ul>
@@ -1039,13 +1032,13 @@
 
         <div class="page-footer">
             <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
-            <span class="page-footer__page">07</span>
+            <span class="page-footer__page">06</span>
         </div>
     </div>
 
 
     <!-- ═══════════════════════════════════════════════
-             PAGE 8: EVALUATION CRITERIA & RESOURCES
+             PAGE 7: EVALUATION CRITERIA & RESOURCES
              ═══════════════════════════════════════════════ -->
     <div class="page">
         <div class="page-header">
@@ -1062,82 +1055,47 @@
             <div class="section-label"><span class="section-label__icon">📊</span> Evaluation Criteria</div>
             <h2 class="section-title">How Solutions<br>Will Be Judged</h2>
 
-            <p>Define the criteria and weightage for evaluating student submissions.</p>
-
             <table class="eval-table">
                 <thead>
                     <tr>
                         <th>Criterion</th>
-                        <th>Description</th>
                         <th>Weight</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><span class="fill">Weeks 1-2</span></td>
-                        <td><span class="fill">Build the CV-QKD data simulator (noise + attack models).</span></td>
+                        <td><span class="fill">Experimental design and methodology</span></td>
+                        <td><span class="fill">35%</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="fill">Quantum model implementation</span></td>
                         <td><span class="fill">25%</span></td>
                     </tr>
                     <tr>
-                        <td><span class="fill">Weeks 3-5</span></td>
-                        <td><span class="fill">Model architecture design, training, and tuning.</span></td>
-                        <td><span class="fill">40%</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="fill">Weeks 6-7</span></td>
-                        <td><span class="fill">Benchmarking against classical baseline and compiling the report.</span>
-                        </td>
+                        <td><span class="fill">Benchmarking and analysis</span></td>
                         <td><span class="fill">25%</span></td>
                     </tr>
                     <tr>
-                        <td><span class="fill">Week 8</span></td>
-                        <td><span class="fill">Finalize notebook demo and documentation.</span></td>
-                        <td><span class="fill">10%</span></td>
+                        <td><span class="fill">Reproducibility</span></td>
+                        <td><span class="fill">15%</span></td>
                     </tr>
-
                 </tbody>
             </table>
 
             <div class="divider"></div>
 
-            <div class="section-label"><span class="section-label__icon">📚</span> Resources & References</div>
-            <p style="margin-bottom: 16px;">Provide helpful resources, documentation, and references for the
-                students.</p>
-
+            <div class="section-label"><span class="section-label__icon">📚</span> Dataset Link</div>
             <div class="resource-item">
-                <div class="resource-item__icon">📖</div>
+                <div class="resource-item__icon">🔗</div>
                 <div>
-                    <div class="resource-item__title">CV-QKD Review</div>
-                    <div class="resource-item__desc">Recent advances in continuous-variable quantum key distribution
-                    </div>
-                </div>
-            </div>
-            <div class="resource-item">
-                <div class="resource-item__icon">💻</div>
-                <div>
-                    <div class="resource-item__title">Machine Learning for Quantum Technologies</div>
-                    <div class="resource-item__desc">A comprehensive guide to ML models applied to quantum sensing,
-                        error correction, and cryptography.</div>
-                </div>
-            </div>
-            <div class="resource-item">
-                <div class="resource-item__icon">🎓</div>
-                <div>
-                    <div class="resource-item__title">Scikit-Learn / PyTorch Time Series Tutorials</div>
-                    <div class="resource-item__desc">Online documentation on handling noisy sequential data.</div>
+                    <div class="resource-item__title">Kaggle Dataset</div>
+                    <div class="resource-item__desc"><a
+                            href="https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database" target="_blank"
+                            style="color:var(--lime); text-decoration: none;">Pima Indians Diabetes Dataset</a></div>
                 </div>
             </div>
 
             <div class="divider"></div>
-
-            <div class="highlight-box">
-                <p><strong>Contact for Queries:</strong> Students can reach out to <span
-                        class="fill">info@taqbit.com</span> for clarifications regarding this problem
-                    statement.<br><br>
-                    <strong>Mentor Availability:</strong> <span class="fill">Mentorship is available directly via
-                        discord upon selection.</span>
-                </p>
-            </div>
 
             <div
                 style="text-align:center; margin-top: 32px; padding: 24px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px;">
@@ -1159,7 +1117,7 @@
 
         <div class="page-footer">
             <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
-            <span class="page-footer__page">08</span>
+            <span class="page-footer__page">07</span>
         </div>
     </div>
 
