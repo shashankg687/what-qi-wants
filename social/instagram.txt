@@ -1,0 +1,26 @@
+# Instagram Event Launch Draft
+
+**Goal:** Visual focus, heavy emoji usage, easy spacing, and directing users to the "link in bio". Ideally paired with an image of the event poster.
+
+---
+
+*(Post Image: The quantum_industry_poster.png)*
+
+Happy National Science Day! 🇮🇳⚛️ To celebrate the spirit of scientific inquiry, we are excited to launch registrations for our upcoming virtual conclave: **"What Quantum Industry Wants?"**
+
+Organized by ICQC, IIT Indore & National Quantum Mission (NQM), this event brings together leading voices from global quantum companies and disruptive startups! 🌍✨
+
+Curious about what it takes to build a career in quantum tech? Want to solve real-world industry problems? This is for YOU! 
+
+📅 **Date:** 14 April 2026 (World Quantum Day)
+📍 **Venue:** Google Meet (Virtual)
+⏳ **Deadline:** 31st March 2026
+💵 **Cost:** 100% Free!
+
+👉 Hit the link in our bio to register now and secure your spot! [Link: https://shashankg687.github.io/what-qi-wants/]
+
+Tag a friend who loves quantum! 👇
+
+*(Shoutout to AI assistants Antigravity & Openclaw for helping put this together and easing the host's job! 🤖✨)*
+
+#NationalScienceDay #QuantumTech #QuantumComputing #IITIndore #NationalQuantumMission #WorldQuantumDay #QuantumIndustry #Physics #TechCareers #QuantumMechanics #ScienceDay

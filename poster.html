@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Quantum Industry Wants? | IIT Indore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --black: #000000;
+            --bg: #050505;
+            --card-bg: #0a0a0a;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --lime: #BFF549;
+            --lime-dim: rgba(191, 245, 73, 0.15);
+            --lime-glow: rgba(191, 245, 73, 0.08);
+            --white: #ffffff;
+            --gray: #9ca3af;
+            --gray-dim: #6b7280;
+            --blue-glow: rgba(59, 130, 246, 0.06);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--white);
+        }
+
+        .poster {
+            width: 1080px;
+            min-height: auto;
+            height: auto;
+            background: var(--black);
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Subtle center glow */
+        .poster::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(191, 245, 73, 0.06) 0%, rgba(191, 245, 73, 0.02) 40%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .poster::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(59, 130, 246, 0.04) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 40px 20px;
+        }
+
+        .logo-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-left img {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+        }
+
+        .logo-left .org-name {
+            color: var(--gray);
+            font-weight: 700;
+            font-size: 11px;
+            line-height: 1.4;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo-right img {
+            width: 82px;
+            height: 82px;
+            object-fit: contain;
+        }
+
+        /* Hero title */
+        .hero {
+            text-align: center;
+            padding: 20px 60px 0;
+        }
+
+        .hero .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(191, 245, 73, 0.08);
+            border: 1px solid rgba(191, 245, 73, 0.2);
+            border-radius: 100px;
+            padding: 8px 22px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--lime);
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            background: linear-gradient(180deg, #ffffff 30%, #6b7280 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            font-weight: 400;
+            margin-bottom: 28px;
+        }
+
+        /* Topics row */
+        .topics {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            padding: 0 60px;
+            margin-bottom: 28px;
+        }
+
+        .topic-card {
+            flex: 1;
+            max-width: 230px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        .topic-card:hover {
+            border-color: rgba(191, 245, 73, 0.2);
+        }
+
+        .topic-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .topic-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.3px;
+        }
+
+        .topic-desc {
+            font-size: 12px;
+            color: var(--gray-dim);
+            margin-top: 4px;
+        }
+
+        /* Audience pill */
+        .audience {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .audience span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .audience .label {
+            color: var(--lime);
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Center visual */
+        .visual-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .visual-frame {
+            width: 360px;
+            height: 200px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 80px rgba(191, 245, 73, 0.04), 0 0 40px rgba(59, 130, 246, 0.03);
+        }
+
+        .visual-frame .scene {
+            text-align: center;
+            color: var(--gray-dim);
+            font-size: 14px;
+        }
+
+        .visual-frame .scene .icon {
+            font-size: 56px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Info cards row */
+        .info-row {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            padding: 0 50px;
+            margin-bottom: 18px;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 16px 22px;
+            min-width: 240px;
+            transition: border-color 0.3s;
+        }
+
+        .info-card:hover {
+            border-color: rgba(191, 245, 73, 0.15);
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(191, 245, 73, 0.08);
+            border: 1px solid rgba(191, 245, 73, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .info-label {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2px;
+        }
+
+        .info-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        /* CTA */
+        .cta-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .cta-btn {
+            background: var(--lime);
+            color: var(--black);
+            font-family: 'Inter', sans-serif;
+            font-size: 17px;
+            font-weight: 800;
+            padding: 16px 48px;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.3px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 40px rgba(191, 245, 73, 0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 60px rgba(191, 245, 73, 0.3);
+        }
+
+        .cta-btn .arrow {
+            font-size: 20px;
+            opacity: 0.7;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            padding-bottom: 28px;
+            font-size: 14px;
+            color: var(--gray-dim);
+        }
+
+        .contact a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact .mail-icon {
+            color: var(--lime);
+            margin-right: 4px;
+        }
+
+        @media print {
+            body {
+                background: #000;
+                padding: 0
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="poster">
+        <div class="content">
+
+            <!-- Header logos -->
+            <div class="header">
+                <div class="logo-left">
+                    <img src="Logo_NQM.png" alt="National Quantum Mission">
+                    <span class="org-name">National<br>Quantum<br>Mission</span>
+                </div>
+                <div class="logo-right">
+                    <img src="iiti_logo.png" alt="IIT Indore">
+                </div>
+            </div>
+
+            <!-- Hero -->
+            <div class="hero">
+                <div class="badge">⚡ World Quantum Day · 14 April 2026</div>
+                <h1>What <span
+                        style="-webkit-text-fill-color: var(--lime); color: var(--lime);">Quantum<br>Industry</span>
+                    Wants?</h1>
+                <p class="subtitle">Industry Leaders Shaping the Quantum Future</p>
+            </div>
+
+            <!-- Topic cards -->
+            <div class="topics">
+                <div class="topic-card">
+                    <span class="topic-icon">⚛️</span>
+                    <div class="topic-name">Quantum Computing</div>
+                    <div class="topic-desc">Algorithms · Hardware · Software</div>
+                </div>
+                <div class="topic-card">
+                    <span class="topic-icon">📡</span>
+                    <div class="topic-name">Quantum Sensing</div>
+                    <div class="topic-desc">Metrology · Imaging · Navigation</div>
+                </div>
+                <div class="topic-card">
+                    <span class="topic-icon">🔐</span>
+                    <div class="topic-name">Quantum Communication</div>
+                    <div class="topic-desc">QKD · Networks · Cryptography</div>
+                </div>
+                <div class="topic-card">
+                    <span class="topic-icon">🧪</span>
+                    <div class="topic-name">Quantum Materials</div>
+                    <div class="topic-desc">Superconductors · Topological · Novel</div>
+                </div>
+            </div>
+
+            <!-- Audience -->
+            <div class="audience">
+                <span><span class="label">Target Audience</span> — Students · Researchers · Industry
+                    Professionals</span>
+            </div>
+
+            <!-- Visual — QR Code & Host -->
+            <div class="visual-section" style="gap: 60px;">
+                <!-- Host Details -->
+                <div
+                    style="display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 24px; min-width: 280px; box-shadow: 0 0 80px rgba(191, 245, 73, 0.02), 0 0 40px rgba(59, 130, 246, 0.02);">
+                    <div
+                        style="font-size: 11px; font-weight: 800; color: var(--lime); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;">
+                        Host</div>
+                    <img src="website/assets/photos/sha_pic_linkedin.png" alt="Dr. Shashank Gupta"
+                        style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(191, 245, 73, 0.3); margin-bottom: 16px;">
+                    <div style="font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 6px;">Dr.
+                        Shashank Gupta</div>
+                    <div style="font-size: 14px; color: var(--gray); margin-bottom: 4px;">Assistant Professor</div>
+                    <div style="font-size: 13px; color: var(--gray-dim);">Physics & ICQC, IIT Indore</div>
+                </div>
+
+                <div class="visual-frame" style="width:280px;height:280px;padding:16px;flex-direction:column;">
+                    <img src="qr_register.png" alt="Scan to Register"
+                        style="width:200px;height:200px;border-radius:8px;">
+                    <div
+                        style="margin-top:10px;font-size:12px;font-weight:700;color:var(--lime);text-transform:uppercase;letter-spacing:2px;">
+                        Scan to Register</div>
+                </div>
+            </div>
+
+            <!-- Info cards -->
+            <div class="info-row">
+                <div class="info-card">
+                    <div class="info-icon">📅</div>
+                    <div>
+                        <div class="info-label">Date</div>
+                        <div class="info-value">14 April 2026<br><span
+                                style="font-size:11px;color:var(--gray-dim)">(World Quantum Day)</span></div>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🕐</div>
+                    <div>
+                        <div class="info-label">Time</div>
+                        <div class="info-value">09:00 – 18:00 IST</div>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📍</div>
+                    <div>
+                        <div class="info-label">Venue</div>
+                        <div class="info-value">Google Meet</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-row" style="flex-direction: column; align-items: center; margin-bottom: 18px;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1aIZVjgXszFCp1YIShkSt8q0JZijx7sVwE6topEyJyMMdQg/viewform?usp=publish-editor"
+                    target="_blank" style="text-decoration:none;">
+                    <button class="cta-btn">Register Now <span class="arrow">→</span></button>
+                </a>
+                <div style="margin-top: 12px; font-size: 14px; color: var(--gray);">Registration Deadline: <span
+                        style="color: var(--lime); font-weight: 600;">31st March 2026 (23:59 IST)</span></div>
+            </div>
+
+            <!-- Contact -->
+            <div class="contact">
+                <span class="mail-icon">✉</span> Contact: <a href="mailto:shashankg@iiti.ac.in">shashankg@iiti.ac.in</a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
