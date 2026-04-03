@@ -1,0 +1,28 @@
+# LinkedIn Event Launch Draft
+
+**Goal:** Professional, networking-focused, tagging relevant institutions and creating excitement about the industry-academia gap.
+
+---
+
+🚀 Happy National Science Day! Today, as we celebrate India's legacy of scientific excellence, we invite you to be part of its future in quantum technologies.
+
+We are thrilled to officially launch registrations for **"What Quantum Industry Wants?"** — a premier industry-academia conclave!
+
+Organized by the Inter-disciplinary Centre for Quantum Computing (ICQC) at **IIT Indore** in collaboration with the **National Quantum Mission (NQM)**, this virtual event bridges the gap between quantum research and real-world industry applications. 
+
+📅 **Date:** 14 April 2026 (World Quantum Day)
+📍 **Venue:** Virtual (Google Meet)
+⏳ **Registration Deadline:** 31st March 2026
+
+Join 10+ global quantum industry leaders from companies like IBM Quantum, D-Wave, Quantropi, Deloitte, and disruptive startups like QNu Labs and Quanfluence. Discover what skills are truly needed to build the quantum workforce of tomorrow, hear about their technology roadmaps, and find out what exact problems they are trying to solve.
+
+Whether you are a student, researcher, faculty, or industry professional, this is your chance to align your work with the pragmatic needs of the quantum sector.
+
+✅ Open to all. Free registration!
+🔗 **Website & Registration Link:** https://shashankg687.github.io/what-qi-wants/
+
+Let's shape the quantum future, together. ⚛️
+
+A special shoutout to AI assistants Antigravity and Openclaw for making the event organization and hosting job so much easier! 🤖✨
+
+#NationalScienceDay #NationalQuantumMission #IITIndore #QuantumComputing #QuantumTechnology #QuantumIndustry #WorldQuantumDay #FutureOfWork #STEM

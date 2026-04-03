@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Statement Template | What Quantum Industry Wants?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════════
+           DESIGN TOKENS
+           ═══════════════════════════════════════════════ */
+        :root {
+            --black: #000000;
+            --bg: #050505;
+            --card-bg: #0a0a0a;
+            --card-bg-alt: #0d0d0d;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-border-hover: rgba(191, 245, 73, 0.2);
+            --lime: #BFF549;
+            --lime-dim: rgba(191, 245, 73, 0.15);
+            --lime-glow: rgba(191, 245, 73, 0.08);
+            --lime-subtle: rgba(191, 245, 73, 0.05);
+            --white: #ffffff;
+            --gray: #9ca3af;
+            --gray-dim: #6b7280;
+            --gray-dark: #374151;
+            --blue-glow: rgba(59, 130, 246, 0.06);
+            --section-gap: 0;
+            --page-width: 900px;
+        }
+
+        /* ═══════════════════════════════════════════════
+           RESET & BASE
+           ═══════════════════════════════════════════════ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════════════
+           DOCUMENT CONTAINER
+           ═══════════════════════════════════════════════ */
+        .document {
+            max-width: var(--page-width);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* ═══════════════════════════════════════════════
+           PAGE SECTIONS (each is a full "page")
+           ═══════════════════════════════════════════════ */
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 60px 56px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .page:last-child {
+            border-bottom: none;
+        }
+
+        /* Subtle background glow on select pages */
+        .page--glow::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(191, 245, 73, 0.04) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .page>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ═══════════════════════════════════════════════
+           HEADER BAR (persistent on every page)
+           ═══════════════════════════════════════════════ */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 40px;
+            flex-shrink: 0;
+        }
+
+        .page-header__left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .page-header__logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .page-header__event {
+            color: var(--gray);
+            font-weight: 700;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            line-height: 1.4;
+        }
+
+        .page-header__right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .page-header__right img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+        }
+
+        /* ═══════════════════════════════════════════════
+           PAGE FOOTER
+           ═══════════════════════════════════════════════ */
+        .page-footer {
+            margin-top: auto;
+            padding-top: 24px;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: var(--gray-dim);
+            flex-shrink: 0;
+        }
+
+        .page-footer__event {
+            font-weight: 600;
+            color: var(--gray);
+        }
+
+        .page-footer__page {
+            font-weight: 700;
+            color: var(--lime);
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* ═══════════════════════════════════════════════
+           COVER PAGE
+           ═══════════════════════════════════════════════ */
+        .cover {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cover__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--lime-glow);
+            border: 1px solid rgba(191, 245, 73, 0.2);
+            border-radius: 100px;
+            padding: 10px 26px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--lime);
+            margin-bottom: 32px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .cover__title {
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            background: linear-gradient(180deg, #ffffff 30%, #6b7280 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .cover__subtitle {
+            font-size: 20px;
+            color: var(--gray);
+            font-weight: 400;
+            margin-bottom: 48px;
+            max-width: 600px;
+        }
+
+        .cover__company-block {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 40px 48px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .cover__company-logo {
+            width: 120px;
+            height: 120px;
+            background: var(--card-bg-alt);
+            border: 1px dashed rgba(191, 245, 73, 0.3);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-dim);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .cover__company-name {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.5px;
+        }
+
+        .cover__company-tagline {
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .cover__meta {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+        }
+
+        .cover__meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cover__meta-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--lime-glow);
+            border: 1px solid rgba(191, 245, 73, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .cover__meta-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .cover__meta-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        /* ═══════════════════════════════════════════════
+           SECTION STYLING
+           ═══════════════════════════════════════════════ */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-label__icon {
+            font-size: 14px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(180deg, #ffffff 30%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 28px;
+            line-height: 1.15;
+        }
+
+        .section-body {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.8;
+            flex: 1;
+        }
+
+        .section-body p {
+            margin-bottom: 18px;
+        }
+
+        .section-body strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════════════
+           FILLABLE FIELDS
+           ═══════════════════════════════════════════════ */
+        .fill {
+            display: inline;
+            background: var(--lime-subtle);
+            border: 1px dashed rgba(191, 245, 73, 0.3);
+            border-radius: 4px;
+            padding: 2px 10px;
+            color: var(--lime);
+            font-weight: 600;
+            font-size: 14px;
+            font-style: italic;
+            /* white-space: nowrap; removing to allow wrapping in headers */
+        }
+
+        .fill-block {
+            display: block;
+            background: var(--card-bg);
+            border: 1px dashed rgba(191, 245, 73, 0.25);
+            border-radius: 12px;
+            padding: 20px 24px;
+            color: var(--gray);
+            font-size: 14px;
+            min-height: 80px;
+            margin: 16px 0;
+            font-style: italic;
+        }
+
+        .fill-block--large {
+            min-height: 160px;
+        }
+
+        /* ═══════════════════════════════════════════════
+           CARDS & LISTS
+           ═══════════════════════════════════════════════ */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--card-border-hover);
+        }
+
+        .card__icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .card__title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+
+        .card__desc {
+            font-size: 13px;
+            color: var(--gray-dim);
+            line-height: 1.5;
+        }
+
+        .card--full {
+            grid-column: 1 / -1;
+        }
+
+        /* Numbered list style */
+        .numbered-list {
+            list-style: none;
+            counter-reset: item;
+            margin: 24px 0;
+        }
+
+        .numbered-list li {
+            counter-increment: item;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .numbered-list li:last-child {
+            border-bottom: none;
+        }
+
+        .numbered-list li::before {
+            content: counter(item, decimal-leading-zero);
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--lime);
+            min-width: 40px;
+            opacity: 0.6;
+            line-height: 1.4;
+        }
+
+        .numbered-list li .item-content {
+            flex: 1;
+        }
+
+        .numbered-list li .item-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .numbered-list li .item-desc {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Bullet list */
+        .bullet-list {
+            list-style: none;
+            margin: 16px 0;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding: 8px 0 8px 24px;
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 16px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--lime);
+            opacity: 0.5;
+        }
+
+        .bullet-list li strong {
+            color: var(--white);
+        }
+
+        /* ═══════════════════════════════════════════════
+           EVALUATION TABLE
+           ═══════════════════════════════════════════════ */
+        .eval-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+        }
+
+        .eval-table thead th {
+            text-align: left;
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(191, 245, 73, 0.2);
+        }
+
+        .eval-table tbody td {
+            font-size: 14px;
+            color: var(--gray);
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .eval-table tbody td:first-child {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .eval-table tbody td:last-child {
+            text-align: center;
+            font-weight: 700;
+            color: var(--lime);
+            font-size: 15px;
+        }
+
+        .eval-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ═══════════════════════════════════════════════
+           RESOURCE CARDS
+           ═══════════════════════════════════════════════ */
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            transition: border-color 0.3s;
+        }
+
+        .resource-item:hover {
+            border-color: var(--card-border-hover);
+        }
+
+        .resource-item__icon {
+            width: 40px;
+            height: 40px;
+            background: var(--lime-glow);
+            border: 1px solid rgba(191, 245, 73, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .resource-item__title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .resource-item__desc {
+            font-size: 12px;
+            color: var(--gray-dim);
+            margin-top: 2px;
+        }
+
+        /* ═══════════════════════════════════════════════
+           INSTRUCTIONS BANNER
+           ═══════════════════════════════════════════════ */
+        .instructions {
+            background: linear-gradient(135deg, rgba(191, 245, 73, 0.08), rgba(59, 130, 246, 0.04));
+            border: 1px solid rgba(191, 245, 73, 0.15);
+            border-radius: 16px;
+            padding: 32px 36px;
+            margin-bottom: 32px;
+        }
+
+        .instructions__title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--lime);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .instructions__text {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .instructions__text strong {
+            color: var(--white);
+        }
+
+        /* ═══════════════════════════════════════════════
+           DIVIDER
+           ═══════════════════════════════════════════════ */
+        .divider {
+            height: 1px;
+            background: var(--card-border);
+            margin: 32px 0;
+        }
+
+        /* ═══════════════════════════════════════════════
+           HIGHLIGHT BOX
+           ═══════════════════════════════════════════════ */
+        .highlight-box {
+            background: var(--card-bg);
+            border-left: 3px solid var(--lime);
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .highlight-box strong {
+            color: var(--white);
+        }
+
+        /* ═══════════════════════════════════════════════
+           PRINT STYLES
+           ═══════════════════════════════════════════════ */
+        @media print {
+            body {
+                background: #000;
+                padding: 0;
+            }
+
+            .page {
+                page-break-after: always;
+                min-height: auto;
+            }
+
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="document">
+
+        <!-- ═══════════════════════════════════════════════
+             PAGE 1: COVER
+             ═══════════════════════════════════════════════ -->
+        <div class="page cover page--glow">
+            <div class="page-header">
+                <div class="page-header__left">
+                    <img src="assets/Logo_NQM.png" alt="National Quantum Mission" class="page-header__logo">
+                    <img src="assets/qmd_logo.png" alt="QMD" class="page-header__logo" style="height:48px;width:auto;">
+                    <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+                </div>
+                <div class="page-header__right">
+                    <img src="assets/iiti_logo.png" alt="IIT Indore" class="page-header__logo"
+                        style="width:52px;height:52px;">
+                </div>
+            </div>
+
+            <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                <div class="cover__badge">⚡ Problem Statement · World Quantum Day 2026</div>
+                <h1 class="cover__title"><span class="fill">Is Quantum Machine Learning Suitable for Healthcare Data? —
+                        A Benchmarking Study</span></h1>
+                <p class="cover__subtitle"><span class="fill">Investigate whether Quantum Machine Learning (QML) can
+                        effectively model structured healthcare datasets by benchmarking QML and classical models on the
+                        Pima Indians Diabetes dataset under realistic quantum constraints.</span></p>
+
+                <div class="cover__company-block">
+                    <img src="LTIMindtree_logo.png" alt="LTI Mindtree Logo" class="cover__company-logo"
+                        style="background: none; padding: 0; border-radius: 0; object-fit: contain;">
+                    <div class="cover__company-name"><span class="fill">LTI Mindtree</span></div>
+                    <div class="cover__company-tagline"><span class="fill">Global Technology Consulting and Digital
+                            Solutions</span>
+                    </div>
+                </div>
+
+                <div class="cover__meta">
+                    <div class="cover__meta-item">
+                        <div class="cover__meta-icon">📅</div>
+                        <div>
+                            <div class="cover__meta-label">Event Date</div>
+                            <div class="cover__meta-value">14 April 2026</div>
+                        </div>
+                    </div>
+                    <div class="cover__meta-item">
+                        <div class="cover__meta-icon">🏛️</div>
+                        <div>
+                            <div class="cover__meta-label">Organized By</div>
+                            <div class="cover__meta-value">IIT Indore & NQM</div>
+                        </div>
+                    </div>
+                    <div class="cover__meta-item">
+                        <div class="cover__meta-icon">🎯</div>
+                        <div>
+                            <div class="cover__meta-label">Difficulty</div>
+                            <div class="cover__meta-value"><span class="fill">Intermediate</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+                <span class="page-footer__page">01</span>
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════════
+             PAGE 2: ABOUT US
+             ═══════════════════════════════════════════════ -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-header__left">
+                    <img src="assets/Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <img src="assets/qmd_logo.png" alt="QMD" class="page-header__logo" style="height:48px;width:auto;">
+                    <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+                </div>
+                <div class="page-header__right">
+                    <img src="assets/iiti_logo.png" alt="IIT Indore" class="page-header__logo"
+                        style="width:52px;height:52px;">
+                </div>
+            </div>
+
+            <div class="section-body" style="flex:1;">
+                <div class="section-label"><span class="section-label__icon">🏢</span> About Us</div>
+                <h2 class="section-title">Introduction &<br>Company Overview</h2>
+
+                <div class="fill-block fill-block--large">
+                    <strong>LTM</strong> is a global technology consulting and digital solutions organization with a
+                    strong focus on Artificial Intelligence and emerging technologies.
+                    <br><br>The LTM Quantum Research team focuses on quantum simulation, quantum optimization, quantum
+                    machine learning (QML), and quantum-safe technologies, exploring practical enterprise applications
+                    of quantum computing.
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <span class="card__icon">🔬</span>
+                        <div class="card__title">Core Focus Area</div>
+                        <div class="card__desc"><span class="fill">Quantum Machine Learning, Healthcare Analytics</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">🌍</span>
+                        <div class="card__title">Headquarters</div>
+                        <div class="card__desc"><span class="fill">United States</span></div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">🌐</span>
+                        <div class="card__title">Website</div>
+                        <div class="card__desc"><span class="fill">https://www.ltimindtree.com/</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+                <span class="page-footer__page">02</span>
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════════
+             PAGE 3: MOTIVATION
+             ═══════════════════════════════════════════════ -->
+        <div class="page page--glow">
+            <div class="page-header">
+                <div class="page-header__left">
+                    <img src="assets/Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <img src="assets/qmd_logo.png" alt="QMD" class="page-header__logo" style="height:48px;width:auto;">
+                    <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+                </div>
+                <div class="page-header__right">
+                    <img src="assets/iiti_logo.png" alt="IIT Indore" class="page-header__logo"
+                        style="width:52px;height:52px;">
+                </div>
+            </div>
+
+            <div class="section-body" style="flex:1;">
+                <div class="section-label"><span class="section-label__icon">💡</span> Motivation</div>
+                <h2 class="section-title">Why This Problem<br>Matters</h2>
+
+                <p>Machine learning is widely used in healthcare to predict disease risks from clinical data. Quantum
+                    Machine Learning (QML) is an emerging field exploring whether quantum computing techniques can
+                    enhance machine learning tasks.</p>
+
+                <div class="fill-block fill-block--large">
+                    However, real-world structured datasets are often low-dimensional and noisy, raising an important
+                    question:
+                    <br><br><strong>When does QML actually make sense for real-world data?</strong>
+                    <br><br>This challenge aims to evaluate the practical usefulness and limitations of QML using a real
+                    healthcare dataset.
+                </div>
+
+            </div>
+
+            <div class="page-footer">
+                <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+                <span class="page-footer__page">03</span>
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════════
+             PAGE 4: PROBLEM STATEMENT
+             ═══════════════════════════════════════════════ -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-header__left">
+                    <img src="assets/Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <img src="assets/qmd_logo.png" alt="QMD" class="page-header__logo" style="height:48px;width:auto;">
+                    <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+                </div>
+                <div class="page-header__right">
+                    <img src="assets/iiti_logo.png" alt="IIT Indore" class="page-header__logo"
+                        style="width:52px;height:52px;">
+                </div>
+            </div>
+
+            <div class="section-body" style="flex:1;">
+                <h2 class="section-title"><span class="fill">Problem Statement</span></h2>
+
+                <div class="fill-block fill-block--large">
+                    Participants must investigate whether QML provides meaningful advantages over classical ML for
+                    structured healthcare datasets.
+                    <br><br>Using the Pima Indians Diabetes dataset, teams must build baseline models, implement at
+                    least one QML model using a hybrid quantum–classical approach, and evaluate the impact of quantum
+                    constraints.
+                    The focus is not only model accuracy but also a critical evaluation of QML applicability.
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Pima Indians Diabetes Dataset:</strong>
+                    <p class="fill">The dataset contains 768 patient records with 8 clinical attributes such as glucose
+                        level, blood pressure, BMI, insulin level, age, etc.<br>Task: Binary classification to predict
+                        diabetes risk.</p>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section-label"><span class="section-label__icon">🔑</span> Expected Tasks</div>
+
+            <ul class="numbered-list">
+                <li>
+                    <div class="item-content">
+                        <div class="item-title"><span class="fill">Data Preparation</span></div>
+                        <div class="item-desc"><span class="fill">Preprocess and analyze the dataset.</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-title"><span class="fill">Classical Baseline</span></div>
+                        <div class="item-desc"><span class="fill">Implement classical ML baseline models (e.g. Logistic
+                                Regression, Random Forest, SVM).</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-title"><span class="fill">Quantum Model Implementation</span></div>
+                        <div class="item-desc"><span class="fill">Implement at least one Quantum Machine Learning model
+                                using frameworks such as Qiskit or PennyLane.</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-title"><span class="fill">Benchmarking and Analysis</span></div>
+                        <div class="item-desc"><span class="fill">Compare classical and quantum model performance and
+                                provide analysis on whether QML is suitable for this problem.</span></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="page-footer">
+            <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+            <span class="page-footer__page">04</span>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════
+             PAGE 5: REQUIREMENTS
+             ═══════════════════════════════════════════════ -->
+    <div class="page">
+        <div class="page-header">
+            <div class="page-header__left">
+                <img src="assets/Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <img src="assets/qmd_logo.png" alt="QMD" class="page-header__logo" style="height:48px;width:auto;">
+                <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+            </div>
+            <div class="page-header__right">
+                <img src="assets/iiti_logo.png" alt="IIT Indore" class="page-header__logo" style="width:52px;height:52px;">
+            </div>
+        </div>
+
+        <div class="section-body" style="flex:1;">
+            <div class="section-label"><span class="section-label__icon">⚙️</span> Requirements</div>
+            <h2 class="section-title">Mandatory<br>Requirements</h2>
+
+            <div class="card-grid">
+                <div class="card card--full">
+                    <span class="card__icon">💻</span>
+                    <div class="card__title">Quantum Requirement</div>
+                    <div class="card__desc">
+                        <div class="fill-block">
+                            Solutions must include a quantum circuit-based model implemented using frameworks such as:
+                            <br>• Qiskit
+                            <br>• PennyLane
+                            <br>• Cirq
+                            <br><br>Submissions without a quantum model implementation will not be considered.
+                        </div>
+                    </div>
+                </div>
+                <div class="card card--full">
+                    <span class="card__icon">📊</span>
+                    <div class="card__title">Mandatory Results Table</div>
+                    <div class="card__desc">
+                        <div class="fill-block">
+                            Teams must include the following comparison table in their submission:
+                            <br><br>
+                            Model | Accuracy | ROC-AUC
+                            <br>Logistic Regression | ... | ...
+                            <br>Random Forest / SVM | ... | ...
+                            <br>Quantum ML Model | ... | ...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Note:</strong> This is a self-guided challenge. No mentoring, technical support, or guidance
+                    will be provided by LTM during the challenge. Participants are expected to independently explore the
+                    dataset and relevant quantum machine learning frameworks.
+                </p>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+            <span class="page-footer__page">05</span>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════
+             PAGE 6: DELIVERABLES
+             ═══════════════════════════════════════════════ -->
+    <div class="page page--glow">
+        <div class="page-header">
+            <div class="page-header__left">
+                <img src="assets/Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <img src="assets/qmd_logo.png" alt="QMD" class="page-header__logo" style="height:48px;width:auto;">
+                <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+            </div>
+            <div class="page-header__right">
+                <img src="assets/iiti_logo.png" alt="IIT Indore" class="page-header__logo" style="width:52px;height:52px;">
+            </div>
+        </div>
+
+        <div class="section-body" style="flex:1;">
+            <div class="section-label"><span class="section-label__icon">📦</span> Deliverables</div>
+            <h2 class="section-title">What Students<br>Must Submit</h2>
+
+            <ul class="numbered-list">
+                <li>
+                    <div class="item-content">
+                        <div class="item-title">Single Runnable Notebook</div>
+                        <div class="item-desc"><span class="fill">(Jupyter/Colab) reproducing the full workflow and
+                                results.</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-title">Code Implementation</div>
+                        <div class="item-desc"><span class="fill">Code implementing both classical and quantum
+                                models.</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-title">Quantum Circuit Diagram</div>
+                        <div class="item-desc"><span class="fill">At least one quantum circuit diagram used in the
+                                model.</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-title">Short Report</div>
+                        <div class="item-desc"><span class="fill">Maximum 3 pages explaining methodology and insights.
+                                Results must be reproducible from the submitted code.</span></div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <div class="section-label"><span class="section-label__icon">📅</span> Timeline</div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <span class="card__icon">🚀</span>
+                    <div class="card__title">Start Date</div>
+                    <div class="card__desc">14 April 2026 (after the event)</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+            <span class="page-footer__page">06</span>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════
+             PAGE 7: EVALUATION CRITERIA & RESOURCES
+             ═══════════════════════════════════════════════ -->
+    <div class="page">
+        <div class="page-header">
+            <div class="page-header__left">
+                <img src="assets/Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <img src="assets/qmd_logo.png" alt="QMD" class="page-header__logo" style="height:48px;width:auto;">
+                <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+            </div>
+            <div class="page-header__right">
+                <img src="assets/iiti_logo.png" alt="IIT Indore" class="page-header__logo" style="width:52px;height:52px;">
+            </div>
+        </div>
+
+        <div class="section-body" style="flex:1;">
+            <div class="section-label"><span class="section-label__icon">📊</span> Evaluation Criteria</div>
+            <h2 class="section-title">How Solutions<br>Will Be Judged</h2>
+
+            <table class="eval-table">
+                <thead>
+                    <tr>
+                        <th>Criterion</th>
+                        <th>Weight</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="fill">Experimental design and methodology</span></td>
+                        <td><span class="fill">35%</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="fill">Quantum model implementation</span></td>
+                        <td><span class="fill">25%</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="fill">Benchmarking and analysis</span></td>
+                        <td><span class="fill">25%</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="fill">Reproducibility</span></td>
+                        <td><span class="fill">15%</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="divider"></div>
+
+            <div class="section-label"><span class="section-label__icon">📚</span> Dataset Link</div>
+            <div class="resource-item">
+                <div class="resource-item__icon">🔗</div>
+                <div>
+                    <div class="resource-item__title">Kaggle Dataset</div>
+                    <div class="resource-item__desc"><a
+                            href="https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database" target="_blank"
+                            style="color:var(--lime); text-decoration: none;">Pima Indians Diabetes Dataset</a></div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div
+                style="text-align:center; margin-top: 32px; padding: 24px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px;">
+                <div
+                    style="font-size: 12px; font-weight: 700; color: var(--lime); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">
+                    Organized By</div>
+                <div style="font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px;">Department
+                    of Physics & Interdisciplinary Center for Quantum Computing</div>
+                <div style="font-size: 14px; color: var(--gray);">Indian Institute of Technology Indore</div>
+                <div style="font-size: 13px; color: var(--gray-dim); margin-top: 4px;">Under the aegis of National
+                    Quantum Mission</div>
+                <div style="font-size: 13px; color: var(--gray-dim); margin-top: 12px;">
+                    Host: <strong style="color: var(--white);">Dr. Shashank Gupta</strong> · Assistant Professor<br>
+                    ✉ <a href="mailto:shashankg@iiti.ac.in"
+                        style="color: var(--lime); text-decoration: none;">shashankg@iiti.ac.in</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+            <span class="page-footer__page">07</span>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>

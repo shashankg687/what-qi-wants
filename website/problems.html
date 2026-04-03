@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Statements | What Quantum Industry Wants?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --black: #000000;
+            --dark: #0a0a0a;
+            --card: #111111;
+            --card-border: rgba(255, 255, 255, 0.06);
+            --lime: #BFF549;
+            --lime-dim: rgba(191, 245, 73, 0.12);
+            --white: #ffffff;
+            --gray: #9ca3af;
+            --gray-dim: #6b7280;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── Navigation ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 14px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-brand img {
+            height: 36px;
+        }
+
+        .nav-brand span {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--lime);
+        }
+
+        .nav-cta {
+            background: var(--lime) !important;
+            color: var(--black) !important;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-weight: 700 !important;
+            font-size: 12px !important;
+            letter-spacing: 0.3px;
+            transition: box-shadow 0.3s;
+        }
+
+        .nav-cta:hover {
+            box-shadow: 0 0 30px rgba(191, 245, 73, 0.4);
+        }
+
+        /* ─── Header ─── */
+        .page-header {
+            padding: 160px 32px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(191, 245, 73, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-header h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #ffffff 30%, #6b7280 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* ─── Content ─── */
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 32px;
+        }
+
+        .problem-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 32px;
+            transition: border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card:hover {
+            border-color: rgba(191, 245, 73, 0.3);
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--lime);
+            opacity: 0.5;
+        }
+
+        .company-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--lime-dim);
+            color: var(--lime);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .problem-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .problem-desc {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .problem-meta {
+            display: flex;
+            gap: 20px;
+            padding-top: 24px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .meta-item {
+            font-size: 13px;
+            color: var(--gray-dim);
+        }
+
+        .meta-item strong {
+            color: var(--white);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            padding: 40px 32px;
+            color: var(--gray-dim);
+            font-size: 13px;
+            background: var(--black);
+        }
+
+        footer .footer-logos {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            opacity: 0.6;
+        }
+
+        footer .footer-logos img {
+            height: 40px;
+        }
+
+        footer a {
+            color: var(--lime);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .problem-card {
+                padding: 24px;
+            }
+
+            .problem-meta {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ Navigation ═══ -->
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/Logo_NQM.png" alt="NQM">
+                <img src="assets/qmd_logo.png" alt="QMD">
+                <span>NQM × IIT Indore</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#schedule">Schedule</a>
+                <a href="index.html#speakers">Speakers</a>
+                <a href="problems.html" class="active">Problem Statements</a>
+                <a href="index.html#host">Host</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1aIZVjgXszFCp1YIShkSt8q0JZijx7sVwE6topEyJyMMdQg/viewform?usp=dialog"
+                    target="_blank" class="nav-cta">Register Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══ Header ═══ -->
+    <header class="page-header">
+        <h1>Problem Statements</h1>
+        <p>Real-world challenges presented by our industry speakers. A unique opportunity for researchers and students
+            to tackle problems that matter to the quantum workforce.</p>
+    </header>
+
+    <!-- ═══ Content ═══ -->
+    <main class="content">
+
+        <!-- D-Wave Problem -->
+        <a href="dwave_problem.html" style="text-decoration: none; color: inherit;">
+            <div class="problem-card">
+                <div class="company-tag">D-Wave Quantum Inc.</div>
+                <h2 class="problem-title">Real World Knapsack Problem</h2>
+                <p class="problem-desc">
+                    Build a real-world application demo of the knapsack problem targeted towards a specific problem in a
+                    specific industry using D-Wave's Ocean SDK.
+                </p>
+                <div class="problem-meta">
+                    <div class="meta-item">
+                        <strong>Focus Area</strong>
+                        Quantum Computing / Optimization
+                    </div>
+                    <div class="meta-item">
+                        <strong>Difficulty Level</strong>
+                        Advanced
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Taqbit Problem 1 -->
+        <a href="taqbit_problem_1.html" style="text-decoration: none; color: inherit;">
+            <div class="problem-card">
+                <div class="company-tag">Taqbit Labs</div>
+                <h2 class="problem-title">Decoy-state parameter estimation for Twin-Field QKD</h2>
+                <p class="problem-desc">
+                    Analyze and implement decoy-state methods for TF-QKD under realistic imperfections and finite-size
+                    effects.
+                </p>
+                <div class="problem-meta">
+                    <div class="meta-item">
+                        <strong>Focus Area</strong>
+                        Quantum Key Distribution
+                    </div>
+                    <div class="meta-item">
+                        <strong>Difficulty Level</strong>
+                        Intermediate
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Taqbit Problem 2 -->
+        <a href="taqbit_problem_2.html" style="text-decoration: none; color: inherit;">
+            <div class="problem-card">
+                <div class="company-tag">Taqbit Labs</div>
+                <h2 class="problem-title">Comparative analysis of Twin-Field QKD variants</h2>
+                <p class="problem-desc">
+                    Systematically study and explain subtle differences between multiple TF-QKD variants to provide a
+                    unified comparison targeting experimental feasibility and security assumptions.
+                </p>
+                <div class="problem-meta">
+                    <div class="meta-item">
+                        <strong>Focus Area</strong>
+                        Quantum Key Distribution
+                    </div>
+                    <div class="meta-item">
+                        <strong>Difficulty Level</strong>
+                        Advanced
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Taqbit Problem 3 -->
+        <a href="taqbit_problem_3.html" style="text-decoration: none; color: inherit;">
+            <div class="problem-card">
+                <div class="company-tag">Taqbit Labs</div>
+                <h2 class="problem-title">AI/ML for adaptive stabilization and anomaly detection in Continuous-Variable
+                    QKD</h2>
+                <p class="problem-desc">
+                    Develop machine learning models to dynamically stabilize continuous-variable QKD systems and detect
+                    eavesdropping anomalies in real-time.
+                </p>
+                <div class="problem-meta">
+                    <div class="meta-item">
+                        <strong>Focus Area</strong>
+                        Quantum Security
+                    </div>
+                    <div class="meta-item">
+                        <strong>Difficulty Level</strong>
+                        Advanced
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- LTI Mindtree Problem -->
+        <a href="ltimindtree_problem.html" style="text-decoration: none; color: inherit;">
+            <div class="problem-card">
+                <div class="company-tag">LTI Mindtree</div>
+                <h2 class="problem-title">Is Quantum Machine Learning Suitable for Healthcare Data? — A Benchmarking
+                    Study</h2>
+                <p class="problem-desc">
+                    Investigate whether Quantum Machine Learning (QML) can effectively model structured healthcare
+                    datasets by benchmarking QML and classical models on the Pima Indians Diabetes dataset.
+                </p>
+                <div class="problem-meta">
+                    <div class="meta-item">
+                        <strong>Focus Area</strong>
+                        Quantum Machine Learning (QML)
+                    </div>
+                    <div class="meta-item">
+                        <strong>Difficulty Level</strong>
+                        Intermediate
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Quantropi Problem -->
+        <a href="quantropi_problem.html" style="text-decoration: none; color: inherit;">
+            <div class="problem-card">
+                <div class="company-tag">Quantropi Inc.</div>
+                <h2 class="problem-title">Generating Certified Randomness from Computational Timing Jitter</h2>
+                <p class="problem-desc">
+                    Design and implement a Random Permutation Sorting System (RPSS) that harvests computational timing
+                    jitter to produce certified, statistically uniform random numbers without specialized hardware.
+                </p>
+                <div class="problem-meta">
+                    <div class="meta-item">
+                        <strong>Focus Area</strong>
+                        Post-Quantum Cryptography / TRNG
+                    </div>
+                    <div class="meta-item">
+                        <strong>Difficulty Level</strong>
+                        Intermediate–Advanced
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- TCS Research – Quantum Computing Problem -->
+        <a href="tcs_qc_problem.html" style="text-decoration: none; color: inherit;">
+            <div class="problem-card">
+                <div class="company-tag">TCS Research · IIT Indore Only</div>
+                <h2 class="problem-title">Fraud Detection using Quantum Machine Learning</h2>
+                <p class="problem-desc">
+                    Design and implement a fraud detection system leveraging Quantum Machine Learning techniques on the
+                    Kaggle Credit Card Fraud Detection dataset, comparing against classical baselines.
+                </p>
+                <div class="problem-meta">
+                    <div class="meta-item">
+                        <strong>Focus Area</strong>
+                        Quantum Machine Learning / Finance
+                    </div>
+                    <div class="meta-item">
+                        <strong>Availability</strong>
+                        IIT Indore Participants Only
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- TCS Research – Quantum Sensing Problem -->
+        <a href="tcs_qs_problem.html" style="text-decoration: none; color: inherit;">
+            <div class="problem-card">
+                <div class="company-tag">TCS Research · IIT Indore Only</div>
+                <h2 class="problem-title">Enhancing Diamond Magnetometry with AI-Driven Optimization</h2>
+                <p class="problem-desc">
+                    Employ a data-driven closed-loop optimization pipeline to tune NV diamond magnetometry experimental
+                    parameters and improve sensor performance under real-world conditions.
+                </p>
+                <div class="problem-meta">
+                    <div class="meta-item">
+                        <strong>Focus Area</strong>
+                        Quantum Sensing / AI Optimization
+                    </div>
+                    <div class="meta-item">
+                        <strong>Availability</strong>
+                        IIT Indore Participants Only
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- LQUOM Problem -->
+        <a href="lquom_problem.html" style="text-decoration: none; color: inherit;">
+            <div class="problem-card">
+                <div class="company-tag">LQUOM, Inc.</div>
+                <h2 class="problem-title">Quantum Repeaters — How Can Humanity Overcome the Limit?</h2>
+                <p class="problem-desc">
+                    Investigate the implementation challenges of quantum repeater systems and propose solutions for
+                    overcoming photon loss in long-distance quantum communication.
+                </p>
+                <div class="problem-meta">
+                    <div class="meta-item">
+                        <strong>Focus Area</strong>
+                        Quantum Communication
+                    </div>
+                    <div class="meta-item">
+                        <strong>Difficulty Level</strong>
+                        Advanced
+                    </div>
+                </div>
+            </div>
+        </a>
+
+    </main>
+
+    <!-- ═══ Footer ═══ -->
+    <footer>
+        <div class="footer-logos">
+            <img src="assets/Logo_NQM.png" alt="NQM">
+            <img src="assets/qmd_logo.png" alt="QMD">
+            <img src="assets/iiti_logo.png" alt="IIT Indore">
+        </div>
+        <p>Organised by the <strong>Inter-disciplinary Centre for Quantum Computing (ICQC)</strong>, IIT Indore</p>
+        <p>in collaboration with the <strong>National Quantum Mission (NQM)</strong></p>
+        <p style="margin-top: 12px;">© 2026 What Quantum Industry Wants? · <a
+                href="mailto:shashankg@iiti.ac.in">Contact</a></p>
+    </footer>
+
+</body>
+
+</html>

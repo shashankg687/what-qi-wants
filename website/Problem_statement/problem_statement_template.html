@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Statement Template | What Quantum Industry Wants?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════════
+           DESIGN TOKENS
+           ═══════════════════════════════════════════════ */
+        :root {
+            --black: #000000;
+            --bg: #050505;
+            --card-bg: #0a0a0a;
+            --card-bg-alt: #0d0d0d;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-border-hover: rgba(191, 245, 73, 0.2);
+            --lime: #BFF549;
+            --lime-dim: rgba(191, 245, 73, 0.15);
+            --lime-glow: rgba(191, 245, 73, 0.08);
+            --lime-subtle: rgba(191, 245, 73, 0.05);
+            --white: #ffffff;
+            --gray: #9ca3af;
+            --gray-dim: #6b7280;
+            --gray-dark: #374151;
+            --blue-glow: rgba(59, 130, 246, 0.06);
+            --section-gap: 0;
+            --page-width: 900px;
+        }
+
+        /* ═══════════════════════════════════════════════
+           RESET & BASE
+           ═══════════════════════════════════════════════ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════════════
+           DOCUMENT CONTAINER
+           ═══════════════════════════════════════════════ */
+        .document {
+            max-width: var(--page-width);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* ═══════════════════════════════════════════════
+           PAGE SECTIONS (each is a full "page")
+           ═══════════════════════════════════════════════ */
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 60px 56px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .page:last-child {
+            border-bottom: none;
+        }
+
+        /* Subtle background glow on select pages */
+        .page--glow::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(191, 245, 73, 0.04) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .page>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ═══════════════════════════════════════════════
+           HEADER BAR (persistent on every page)
+           ═══════════════════════════════════════════════ */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 40px;
+            flex-shrink: 0;
+        }
+
+        .page-header__left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .page-header__logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .page-header__event {
+            color: var(--gray);
+            font-weight: 700;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            line-height: 1.4;
+        }
+
+        .page-header__right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .page-header__right img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+        }
+
+        /* ═══════════════════════════════════════════════
+           PAGE FOOTER
+           ═══════════════════════════════════════════════ */
+        .page-footer {
+            margin-top: auto;
+            padding-top: 24px;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: var(--gray-dim);
+            flex-shrink: 0;
+        }
+
+        .page-footer__event {
+            font-weight: 600;
+            color: var(--gray);
+        }
+
+        .page-footer__page {
+            font-weight: 700;
+            color: var(--lime);
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* ═══════════════════════════════════════════════
+           COVER PAGE
+           ═══════════════════════════════════════════════ */
+        .cover {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cover__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--lime-glow);
+            border: 1px solid rgba(191, 245, 73, 0.2);
+            border-radius: 100px;
+            padding: 10px 26px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--lime);
+            margin-bottom: 32px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .cover__title {
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            background: linear-gradient(180deg, #ffffff 30%, #6b7280 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .cover__subtitle {
+            font-size: 20px;
+            color: var(--gray);
+            font-weight: 400;
+            margin-bottom: 48px;
+            max-width: 600px;
+        }
+
+        .cover__company-block {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 40px 48px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .cover__company-logo {
+            width: 120px;
+            height: 120px;
+            background: var(--card-bg-alt);
+            border: 1px dashed rgba(191, 245, 73, 0.3);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-dim);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .cover__company-name {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.5px;
+        }
+
+        .cover__company-tagline {
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .cover__meta {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+        }
+
+        .cover__meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cover__meta-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--lime-glow);
+            border: 1px solid rgba(191, 245, 73, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .cover__meta-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .cover__meta-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        /* ═══════════════════════════════════════════════
+           SECTION STYLING
+           ═══════════════════════════════════════════════ */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-label__icon {
+            font-size: 14px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(180deg, #ffffff 30%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 28px;
+            line-height: 1.15;
+        }
+
+        .section-body {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.8;
+            flex: 1;
+        }
+
+        .section-body p {
+            margin-bottom: 18px;
+        }
+
+        .section-body strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════════════
+           FILLABLE FIELDS
+           ═══════════════════════════════════════════════ */
+        .fill {
+            display: inline;
+            background: var(--lime-subtle);
+            border: 1px dashed rgba(191, 245, 73, 0.3);
+            border-radius: 4px;
+            padding: 2px 10px;
+            color: var(--lime);
+            font-weight: 600;
+            font-size: 14px;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        .fill-block {
+            display: block;
+            background: var(--card-bg);
+            border: 1px dashed rgba(191, 245, 73, 0.25);
+            border-radius: 12px;
+            padding: 20px 24px;
+            color: var(--gray);
+            font-size: 14px;
+            min-height: 80px;
+            margin: 16px 0;
+            font-style: italic;
+        }
+
+        .fill-block--large {
+            min-height: 160px;
+        }
+
+        /* ═══════════════════════════════════════════════
+           CARDS & LISTS
+           ═══════════════════════════════════════════════ */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--card-border-hover);
+        }
+
+        .card__icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .card__title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+
+        .card__desc {
+            font-size: 13px;
+            color: var(--gray-dim);
+            line-height: 1.5;
+        }
+
+        .card--full {
+            grid-column: 1 / -1;
+        }
+
+        /* Numbered list style */
+        .numbered-list {
+            list-style: none;
+            counter-reset: item;
+            margin: 24px 0;
+        }
+
+        .numbered-list li {
+            counter-increment: item;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .numbered-list li:last-child {
+            border-bottom: none;
+        }
+
+        .numbered-list li::before {
+            content: counter(item, decimal-leading-zero);
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--lime);
+            min-width: 40px;
+            opacity: 0.6;
+            line-height: 1.4;
+        }
+
+        .numbered-list li .item-content {
+            flex: 1;
+        }
+
+        .numbered-list li .item-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .numbered-list li .item-desc {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Bullet list */
+        .bullet-list {
+            list-style: none;
+            margin: 16px 0;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding: 8px 0 8px 24px;
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 16px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--lime);
+            opacity: 0.5;
+        }
+
+        .bullet-list li strong {
+            color: var(--white);
+        }
+
+        /* ═══════════════════════════════════════════════
+           EVALUATION TABLE
+           ═══════════════════════════════════════════════ */
+        .eval-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+        }
+
+        .eval-table thead th {
+            text-align: left;
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(191, 245, 73, 0.2);
+        }
+
+        .eval-table tbody td {
+            font-size: 14px;
+            color: var(--gray);
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .eval-table tbody td:first-child {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .eval-table tbody td:last-child {
+            text-align: center;
+            font-weight: 700;
+            color: var(--lime);
+            font-size: 15px;
+        }
+
+        .eval-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ═══════════════════════════════════════════════
+           RESOURCE CARDS
+           ═══════════════════════════════════════════════ */
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            transition: border-color 0.3s;
+        }
+
+        .resource-item:hover {
+            border-color: var(--card-border-hover);
+        }
+
+        .resource-item__icon {
+            width: 40px;
+            height: 40px;
+            background: var(--lime-glow);
+            border: 1px solid rgba(191, 245, 73, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .resource-item__title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .resource-item__desc {
+            font-size: 12px;
+            color: var(--gray-dim);
+            margin-top: 2px;
+        }
+
+        /* ═══════════════════════════════════════════════
+           INSTRUCTIONS BANNER
+           ═══════════════════════════════════════════════ */
+        .instructions {
+            background: linear-gradient(135deg, rgba(191, 245, 73, 0.08), rgba(59, 130, 246, 0.04));
+            border: 1px solid rgba(191, 245, 73, 0.15);
+            border-radius: 16px;
+            padding: 32px 36px;
+            margin-bottom: 32px;
+        }
+
+        .instructions__title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--lime);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .instructions__text {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .instructions__text strong {
+            color: var(--white);
+        }
+
+        /* ═══════════════════════════════════════════════
+           DIVIDER
+           ═══════════════════════════════════════════════ */
+        .divider {
+            height: 1px;
+            background: var(--card-border);
+            margin: 32px 0;
+        }
+
+        /* ═══════════════════════════════════════════════
+           HIGHLIGHT BOX
+           ═══════════════════════════════════════════════ */
+        .highlight-box {
+            background: var(--card-bg);
+            border-left: 3px solid var(--lime);
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .highlight-box strong {
+            color: var(--white);
+        }
+
+        /* ═══════════════════════════════════════════════
+           PRINT STYLES
+           ═══════════════════════════════════════════════ */
+        @media print {
+            body {
+                background: #000;
+                padding: 0;
+            }
+
+            .page {
+                page-break-after: always;
+                min-height: auto;
+            }
+
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="document">
+
+        <!-- ═══════════════════════════════════════════════
+             PAGE 1: COVER
+             ═══════════════════════════════════════════════ -->
+        <div class="page cover page--glow">
+            <div class="page-header">
+                <div class="page-header__left">
+                    <img src="../Logo_NQM.png" alt="National Quantum Mission" class="page-header__logo">
+                    <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+                </div>
+                <div class="page-header__right">
+                    <img src="../iiti_logo.png" alt="IIT Indore" class="page-header__logo"
+                        style="width:52px;height:52px;">
+                </div>
+            </div>
+
+            <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                <div class="cover__badge">⚡ Problem Statement · World Quantum Day 2026</div>
+                <h1 class="cover__title"><span class="fill">[Problem Statement Title]</span></h1>
+                <p class="cover__subtitle"><span class="fill">[One-line description of the problem]</span></p>
+
+                <div class="cover__company-block">
+                    <div class="cover__company-logo">
+                        Company<br>Logo
+                    </div>
+                    <div class="cover__company-name"><span class="fill">[Company Name]</span></div>
+                    <div class="cover__company-tagline"><span class="fill">[Company tagline or domain]</span></div>
+                </div>
+
+                <div class="cover__meta">
+                    <div class="cover__meta-item">
+                        <div class="cover__meta-icon">📅</div>
+                        <div>
+                            <div class="cover__meta-label">Event Date</div>
+                            <div class="cover__meta-value">14 April 2026</div>
+                        </div>
+                    </div>
+                    <div class="cover__meta-item">
+                        <div class="cover__meta-icon">🏛️</div>
+                        <div>
+                            <div class="cover__meta-label">Organized By</div>
+                            <div class="cover__meta-value">IIT Indore & NQM</div>
+                        </div>
+                    </div>
+                    <div class="cover__meta-item">
+                        <div class="cover__meta-icon">🎯</div>
+                        <div>
+                            <div class="cover__meta-label">Difficulty</div>
+                            <div class="cover__meta-value"><span class="fill">[Level]</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+                <span class="page-footer__page">01 / 08</span>
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════════
+             PAGE 2: INSTRUCTIONS FOR SPEAKERS
+             ═══════════════════════════════════════════════ -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-header__left">
+                    <img src="../Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+                </div>
+                <div class="page-header__right">
+                    <img src="../iiti_logo.png" alt="IIT Indore" class="page-header__logo"
+                        style="width:52px;height:52px;">
+                </div>
+            </div>
+
+            <div class="section-body" style="flex:1;">
+                <div class="instructions">
+                    <div class="instructions__title">📋 Instructions for Speakers</div>
+                    <div class="instructions__text">
+                        Thank you for participating in <strong>"What Quantum Industry Wants?"</strong> —
+                        an initiative by <strong>IIT Indore</strong> and the <strong>National Quantum Mission</strong>
+                        to bridge the gap between quantum industry and academia by making students industry ready before
+                        the placement/joining.<br><br>
+
+                        Please fill in the sections marked with <span class="fill">[placeholder text]</span> in this
+                        template.
+                        The completed document will be shared on our <strong>dedicated Discord channel</strong> where
+                        interested 3rd-year undergraduate students can collaborate to solve your problem statement
+                        over the summer.<br><br>
+
+                        <strong>Outcome:</strong> Students who successfully solve the problem statement
+                        may receive an <strong>internship or pre-placement offer (PPO)</strong> from your
+                        organization.<br><br>
+                        <span
+                            style="font-size: 11px; color: var(--gray-dim); display: block; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--card-border);"><strong
+                                style="color: var(--gray);">⚠ Disclaimer:</strong> This event is intended solely to
+                            connect quantum industry leaders with interested students. Neither IIT Indore nor the host
+                            (Dr. Shashank Gupta) is responsible for the evaluation of submissions or the quality of
+                            solutions provided to the problem statements. All evaluation and hiring decisions rest
+                            entirely with the respective industry partner.</span>
+                    </div>
+                </div>
+
+                <div class="section-label"><span class="section-label__icon">📑</span> Template Structure</div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <span class="card__icon">1️⃣</span>
+                        <div class="card__title">About Your Company</div>
+                        <div class="card__desc">Brief introduction to your organization and its quantum focus</div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">2️⃣</span>
+                        <div class="card__title">Motivation</div>
+                        <div class="card__desc">Why this problem matters and the real-world impact</div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">3️⃣</span>
+                        <div class="card__title">Problem Statement</div>
+                        <div class="card__desc">Detailed description of the challenge to be solved</div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">4️⃣</span>
+                        <div class="card__title">Requirements</div>
+                        <div class="card__desc">Technical specifications, constraints, and scope</div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">5️⃣</span>
+                        <div class="card__title">Deliverables</div>
+                        <div class="card__desc">What participants must submit</div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">6️⃣</span>
+                        <div class="card__title">Evaluation & Resources</div>
+                        <div class="card__desc">Judging criteria and helpful references</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+                <span class="page-footer__page">02 / 08</span>
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════════
+             PAGE 3: ABOUT US
+             ═══════════════════════════════════════════════ -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-header__left">
+                    <img src="../Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+                </div>
+                <div class="page-header__right">
+                    <img src="../iiti_logo.png" alt="IIT Indore" class="page-header__logo"
+                        style="width:52px;height:52px;">
+                </div>
+            </div>
+
+            <div class="section-body" style="flex:1;">
+                <div class="section-label"><span class="section-label__icon">🏢</span> About Us</div>
+                <h2 class="section-title">Introduction &<br>Company Overview</h2>
+
+                <p>Provide a brief overview of your company, its mission, and its work in the quantum technology space.
+                </p>
+
+                <div class="fill-block fill-block--large">
+                    [Write 2–3 paragraphs about your company here. Include:
+                    <br>• Company founding year and headquarters
+                    <br>• Core technology focus and products/services
+                    <br>• Key achievements, patents, or milestones
+                    <br>• Team size and notable leadership
+                    <br>• Vision for the future of quantum technology]
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <span class="card__icon">🔬</span>
+                        <div class="card__title">Core Focus Area</div>
+                        <div class="card__desc"><span class="fill">[e.g., Quantum Computing / Cryptography / Sensing /
+                                Communication]</span></div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">🌍</span>
+                        <div class="card__title">Headquarters</div>
+                        <div class="card__desc"><span class="fill">[City, Country]</span></div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">📅</span>
+                        <div class="card__title">Founded</div>
+                        <div class="card__desc"><span class="fill">[Year]</span></div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">🌐</span>
+                        <div class="card__title">Website</div>
+                        <div class="card__desc"><span class="fill">[Company URL]</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+                <span class="page-footer__page">03 / 08</span>
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════════
+             PAGE 4: MOTIVATION
+             ═══════════════════════════════════════════════ -->
+        <div class="page page--glow">
+            <div class="page-header">
+                <div class="page-header__left">
+                    <img src="../Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+                </div>
+                <div class="page-header__right">
+                    <img src="../iiti_logo.png" alt="IIT Indore" class="page-header__logo"
+                        style="width:52px;height:52px;">
+                </div>
+            </div>
+
+            <div class="section-body" style="flex:1;">
+                <div class="section-label"><span class="section-label__icon">💡</span> Motivation</div>
+                <h2 class="section-title">Why This Problem<br>Matters</h2>
+
+                <p>Explain the real-world significance of this problem. Why should students care? What impact will
+                    solving it have on the industry or society?</p>
+
+                <div class="fill-block fill-block--large">
+                    [Describe the motivation behind this problem statement. Consider:
+                    <br>• What industry need or gap does this address?
+                    <br>• What are the current limitations or challenges?
+                    <br>• How does this connect to the broader quantum ecosystem?
+                    <br>• What makes this problem timely and important?]
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>Impact Statement:</strong> <span class="fill">[Describe in 1–2 sentences the real-world
+                            impact of solving this problem]</span></p>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="section-label"><span class="section-label__icon">🔗</span> Prerequisites</div>
+                <p style="margin-bottom: 16px;">What knowledge or skills should students ideally have before attempting
+                    this problem?</p>
+
+                <div class="fill-block">
+                    [List recommended prerequisites, e.g.:
+                    <br>• Quantum mechanics fundamentals
+                    <br>• Programming languages (Python, C/C++, etc.)
+                    <br>• Specific frameworks or libraries
+                    <br>• Linear algebra / cryptography background]
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+                <span class="page-footer__page">04 / 08</span>
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════════
+             PAGE 5: PROBLEM STATEMENT
+             ═══════════════════════════════════════════════ -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-header__left">
+                    <img src="../Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+                </div>
+                <div class="page-header__right">
+                    <img src="../iiti_logo.png" alt="IIT Indore" class="page-header__logo"
+                        style="width:52px;height:52px;">
+                </div>
+            </div>
+
+            <div class="section-body" style="flex:1;">
+                <div class="section-label"><span class="section-label__icon">🎯</span> Problem Statement</div>
+                <h2 class="section-title">Detailed Problem<br>Description</h2>
+
+                <p>Provide a clear and detailed description of the challenge. Be specific about what the students need
+                    to build, implement, or solve.</p>
+
+                <div class="fill-block fill-block--large">
+                    [Write a comprehensive problem statement. Include:
+                    <br>• Clear objective — what must be achieved?
+                    <br>• Technical context — what systems/technologies are involved?
+                    <br>• Constraints — what limitations must be respected?
+                    <br>• Scope — what is in scope vs. out of scope?
+                    <br>
+                    <br>Be specific enough that a motivated 3rd-year undergraduate
+                    can understand the problem and start working on it independently.]
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="section-label"><span class="section-label__icon">🔑</span> Key Challenges</div>
+                <p style="margin-bottom: 16px;">List the core technical challenges students will face.</p>
+
+                <ul class="numbered-list">
+                    <li>
+                        <div class="item-content">
+                            <div class="item-title"><span class="fill">[Challenge 1 Title]</span></div>
+                            <div class="item-desc"><span class="fill">[Brief description of this challenge]</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-title"><span class="fill">[Challenge 2 Title]</span></div>
+                            <div class="item-desc"><span class="fill">[Brief description of this challenge]</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-title"><span class="fill">[Challenge 3 Title]</span></div>
+                            <div class="item-desc"><span class="fill">[Brief description of this challenge]</span></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="page-footer">
+                <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+                <span class="page-footer__page">05 / 08</span>
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════════
+             PAGE 6: REQUIREMENTS
+             ═══════════════════════════════════════════════ -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-header__left">
+                    <img src="../Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+                </div>
+                <div class="page-header__right">
+                    <img src="../iiti_logo.png" alt="IIT Indore" class="page-header__logo"
+                        style="width:52px;height:52px;">
+                </div>
+            </div>
+
+            <div class="section-body" style="flex:1;">
+                <div class="section-label"><span class="section-label__icon">⚙️</span> Requirements</div>
+                <h2 class="section-title">Technical<br>Specifications</h2>
+
+                <p>Define the technical requirements, constraints, and specifications that students must follow.</p>
+
+                <div class="card-grid">
+                    <div class="card card--full">
+                        <span class="card__icon">💻</span>
+                        <div class="card__title">Technical Stack & Tools</div>
+                        <div class="card__desc">
+                            <div class="fill-block">
+                                [Specify required/recommended:
+                                <br>• Programming languages
+                                <br>• Frameworks & libraries
+                                <br>• Hardware platforms (if any)
+                                <br>• Cloud services or simulators]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">📏</span>
+                        <div class="card__title">Constraints</div>
+                        <div class="card__desc">
+                            <div class="fill-block">
+                                [List technical constraints:
+                                <br>• Performance requirements
+                                <br>• Memory/resource limits
+                                <br>• Compatibility requirements]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">✅</span>
+                        <div class="card__title">Acceptance Criteria</div>
+                        <div class="card__desc">
+                            <div class="fill-block">
+                                [Define what constitutes a valid solution:
+                                <br>• Minimum benchmarks
+                                <br>• Required functionality
+                                <br>• Quality standards]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>Note:</strong> Students will be working on these problem statements over the summer break
+                        (May – July 2026). Please calibrate the scope accordingly — the problem should be
+                        <strong>challenging yet achievable</strong> within 8–10 weeks of focused effort by a team of 2–4
+                        undergraduates.
+                    </p>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+                <span class="page-footer__page">06 / 08</span>
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════════
+             PAGE 7: DELIVERABLES
+             ═══════════════════════════════════════════════ -->
+        <div class="page page--glow">
+            <div class="page-header">
+                <div class="page-header__left">
+                    <img src="../Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+                </div>
+                <div class="page-header__right">
+                    <img src="../iiti_logo.png" alt="IIT Indore" class="page-header__logo"
+                        style="width:52px;height:52px;">
+                </div>
+            </div>
+
+            <div class="section-body" style="flex:1;">
+                <div class="section-label"><span class="section-label__icon">📦</span> Deliverables</div>
+                <h2 class="section-title">What Students<br>Must Submit</h2>
+
+                <p>Define exactly what participants need to deliver upon solving the problem statement.</p>
+
+                <ul class="numbered-list">
+                    <li>
+                        <div class="item-content">
+                            <div class="item-title">Source Code & Repository</div>
+                            <div class="item-desc"><span class="fill">[Specify format: GitHub repo, zip file, etc.
+                                    Include any naming conventions or structure requirements.]</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-title">Technical Report</div>
+                            <div class="item-desc"><span class="fill">[Specify length (e.g., 3–5 pages), format (PDF),
+                                    and what it should cover: approach, methodology, results, analysis.]</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-title">Demo / Presentation</div>
+                            <div class="item-desc"><span class="fill">[Specify if a video demo, live presentation, or
+                                    recorded walkthrough is required. Include duration limits.]</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-title">Additional Deliverables</div>
+                            <div class="item-desc"><span class="fill">[Any additional submissions: test reports,
+                                    benchmarks, documentation, datasets, etc.]</span></div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="divider"></div>
+
+                <div class="section-label"><span class="section-label__icon">📅</span> Timeline</div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <span class="card__icon">🚀</span>
+                        <div class="card__title">Start Date</div>
+                        <div class="card__desc">14 April 2026 (after the event)</div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">⏰</span>
+                        <div class="card__title">Submission Deadline</div>
+                        <div class="card__desc"><span class="fill">[Suggested: July 2026]</span></div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">🏆</span>
+                        <div class="card__title">Evaluation Period</div>
+                        <div class="card__desc"><span class="fill">[e.g., July – Aug 2026]</span></div>
+                    </div>
+                    <div class="card">
+                        <span class="card__icon">🎓</span>
+                        <div class="card__title">PPO Decisions</div>
+                        <div class="card__desc"><span class="fill">[Expected date for PPO offers]</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+                <span class="page-footer__page">07 / 08</span>
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════════════
+             PAGE 8: EVALUATION CRITERIA & RESOURCES
+             ═══════════════════════════════════════════════ -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-header__left">
+                    <img src="../Logo_NQM.png" alt="NQM" class="page-header__logo">
+                    <span class="page-header__event">What Quantum<br>Industry Wants?</span>
+                </div>
+                <div class="page-header__right">
+                    <img src="../iiti_logo.png" alt="IIT Indore" class="page-header__logo"
+                        style="width:52px;height:52px;">
+                </div>
+            </div>
+
+            <div class="section-body" style="flex:1;">
+                <div class="section-label"><span class="section-label__icon">📊</span> Evaluation Criteria</div>
+                <h2 class="section-title">How Solutions<br>Will Be Judged</h2>
+
+                <p>Define the criteria and weightage for evaluating student submissions.</p>
+
+                <table class="eval-table">
+                    <thead>
+                        <tr>
+                            <th>Criterion</th>
+                            <th>Description</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="fill">[Criterion 1]</span></td>
+                            <td><span class="fill">[e.g., Correctness of implementation]</span></td>
+                            <td><span class="fill">[%]</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="fill">[Criterion 2]</span></td>
+                            <td><span class="fill">[e.g., Performance & optimization]</span></td>
+                            <td><span class="fill">[%]</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="fill">[Criterion 3]</span></td>
+                            <td><span class="fill">[e.g., Code quality & documentation]</span></td>
+                            <td><span class="fill">[%]</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="fill">[Criterion 4]</span></td>
+                            <td><span class="fill">[e.g., Innovation & creativity]</span></td>
+                            <td><span class="fill">[%]</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="fill">[Criterion 5]</span></td>
+                            <td><span class="fill">[e.g., Presentation & report quality]</span></td>
+                            <td><span class="fill">[%]</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="divider"></div>
+
+                <div class="section-label"><span class="section-label__icon">📚</span> Resources & References</div>
+                <p style="margin-bottom: 16px;">Provide helpful resources, documentation, and references for the
+                    students.</p>
+
+                <div class="resource-item">
+                    <div class="resource-item__icon">📖</div>
+                    <div>
+                        <div class="resource-item__title"><span class="fill">[Resource 1: e.g., Documentation /
+                                Tutorial]</span></div>
+                        <div class="resource-item__desc"><span class="fill">[URL or reference]</span></div>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <div class="resource-item__icon">💻</div>
+                    <div>
+                        <div class="resource-item__title"><span class="fill">[Resource 2: e.g., GitHub Repository /
+                                SDK]</span></div>
+                        <div class="resource-item__desc"><span class="fill">[URL or reference]</span></div>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <div class="resource-item__icon">🎓</div>
+                    <div>
+                        <div class="resource-item__title"><span class="fill">[Resource 3: e.g., Research Paper /
+                                Textbook]</span></div>
+                        <div class="resource-item__desc"><span class="fill">[URL or reference]</span></div>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <div class="resource-item__icon">🔧</div>
+                    <div>
+                        <div class="resource-item__title"><span class="fill">[Resource 4: e.g., Tools / Simulator
+                                Access]</span></div>
+                        <div class="resource-item__desc"><span class="fill">[URL or reference]</span></div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="highlight-box">
+                    <p><strong>Contact for Queries:</strong> Students can reach out to <span class="fill">[Speaker
+                            Name]</span> at <span class="fill">[email]</span> for clarifications regarding this problem
+                        statement.<br><br>
+                        <strong>Mentor Availability:</strong> <span class="fill">[Specify if your company will provide
+                            mentorship/office hours during the summer]</span>
+                    </p>
+                </div>
+
+                <div
+                    style="text-align:center; margin-top: 32px; padding: 24px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px;">
+                    <div
+                        style="font-size: 12px; font-weight: 700; color: var(--lime); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">
+                        Organized By</div>
+                    <div style="font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px;">Department
+                        of Physics & Interdisciplinary Center for Quantum Computing</div>
+                    <div style="font-size: 14px; color: var(--gray);">Indian Institute of Technology Indore</div>
+                    <div style="font-size: 13px; color: var(--gray-dim); margin-top: 4px;">Under the aegis of National
+                        Quantum Mission</div>
+                    <div style="font-size: 13px; color: var(--gray-dim); margin-top: 12px;">
+                        Host: <strong style="color: var(--white);">Dr. Shashank Gupta</strong> · Assistant Professor<br>
+                        ✉ <a href="mailto:shashankg@iiti.ac.in"
+                            style="color: var(--lime); text-decoration: none;">shashankg@iiti.ac.in</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span class="page-footer__event">What Quantum Industry Wants? · IIT Indore · 14 April 2026</span>
+                <span class="page-footer__page">08 / 08</span>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
