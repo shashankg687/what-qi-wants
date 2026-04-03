@@ -4,7 +4,7 @@
 import os
 import html as html_module
 
-OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../website/speakers')
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../speakers')
 
 speakers = [
     {
@@ -149,7 +149,7 @@ speakers = [
     },
     {
         'name': 'Dr. Sourav Chatterjee',
-        'designation': 'Research Engineer',
+        'designation': 'Scientist',
         'org': 'TCS Innovation Labs (TCS Research)',
         'org_short': 'TCS Research',
         'photo': 'sourav_tcs.jpg',
@@ -160,13 +160,17 @@ speakers = [
             "and materials — TCS Research bridges quantum theory with enterprise impact."
         ),
         'bio': (
-            "Dr. Sourav Chatterjee is a Research Engineer at TCS Innovation Labs, Pune, "
-            "specializing in quantum computing, quantum sensing, and quantum communication. "
-            "He is a doctoral candidate in Physics with expertise in photonic Ising machines, "
-            "secure quantum communication, and quantum metrology. His work at TCS explores "
-            "quantum sensing for industrial applications in healthcare, electronics, and magnetic "
-            "material analysis. Sourav is driven by curiosity and enjoys finding practical "
-            "industrial use cases for quantum technologies that can create real-world impact."
+            "Dr. Sourav Chatterjee leads the research efforts in Quantum Optical Technologies at TCS. "
+            "Previously, he worked as a Scientist (C) in the Quantum Experiments with Satellite "
+            "Technology (QuEST) project between the Raman Research Institute (RRI) and the Indian "
+            "Space Research Organization (ISRO). Prior to that he completed his doctoral research "
+            "in Physics from the Max Planck Institute for the Science of Light, Erlangen, Germany. "
+            "In 2020, as a part of a two-member team from RRI, he won the BRICS Worldskills "
+            "competition in Quantum Technology competence organized by the Russian Quantum Centre "
+            "in Moscow. Besides, he holds a B.Sc. (Hons.) in Physics from Calcutta University, a "
+            "B.Tech. in Computer Science Engineering along with a M.S. by research in Computational "
+            "Natural Sciences from IIIT-Hyderabad. He has been extensively involved as an expert "
+            "in the National Quantum Mission being run by the DST, Government of India."
         ),
         'filename': 'poster_sourav_tcs.html',
     },
@@ -684,6 +688,7 @@ def generate_poster(speaker):
         <div class="header">
             <div class="logo-left">
                 <img src="../assets/Logo_NQM.png" alt="NQM">
+                <img src="../assets/qmd_logo.png" alt="QMD" style="height:56px;width:auto;">
                 <span class="org-name">National<br>Quantum<br>Mission</span>
             </div>
             <div class="logo-right">
